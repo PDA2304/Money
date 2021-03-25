@@ -153,13 +153,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Продукты" />
+                        android:layout_gravity="center"
+                        android:text="Здоровье" />
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@mipmap/ic_food_foreground"
-                        app:cb_color="#6780FF"
+                        android:src="@mipmap/ic_health_foreground"
+                        app:cb_color="#52D15E"
                         app:cb_pressedRingWidth="4dp" />
 
                     <TextView
@@ -167,7 +168,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="0 р" />
+                        android:text="0 р"/>
                 </LinearLayout>
 
             </TableRow>
