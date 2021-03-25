@@ -182,13 +182,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Продукты" />
+                        android:layout_gravity="center"
+                        android:text="Подарки" />
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@mipmap/ic_food_foreground"
-                        app:cb_color="#6780FF"
+                        android:src="@mipmap/ic_gift_foreground"
+                        app:cb_color="#FF6767"
                         app:cb_pressedRingWidth="4dp" />
 
                     <TextView
@@ -204,13 +205,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Продукты" />
+                        android:layout_gravity="center"
+                        android:text="Досуг" />
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@mipmap/ic_food_foreground"
-                        app:cb_color="#6780FF"
+                        android:src="@mipmap/ic_leisure_foreground"
+                        app:cb_color="#FF67AD"
                         app:cb_pressedRingWidth="4dp" />
 
                     <TextView

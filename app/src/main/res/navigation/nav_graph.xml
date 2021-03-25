@@ -6,25 +6,25 @@
     app:startDestination="@id/item_categories">
     <fragment
         android:id="@+id/item_invoices"
-        android:name="com.example.money.InvoicesFragment"
+        android:name="com.example.money.fragment.InvoicesFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_invoices" >
     </fragment>
     <fragment
         android:id="@+id/item_categories"
-        android:name="com.example.money.CategoriesFragment"
+        android:name="com.example.money.fragment.CategoriesFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_categories" >
     </fragment>
     <fragment
         android:id="@+id/item_operations"
-        android:name="com.example.money.OperationsFragment"
+        android:name="com.example.money.fragment.OperationsFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_operations" >
     </fragment>
     <fragment
         android:id="@+id/item_profile"
-        android:name="com.example.money.ProfileFragment"
+        android:name="com.example.money.fragment.ProfileFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_profile" >
     </fragment>
