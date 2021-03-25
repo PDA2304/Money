@@ -69,7 +69,7 @@
             android:id="@+id/tableLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout android:orientation="vertical">
+                <LinearLayout android:orientation="vertical" android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
                         android:text="0 р" />
                 </LinearLayout>
 
-                <LinearLayout android:orientation="vertical">
+                <LinearLayout android:orientation="vertical"  android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                         android:text="0 р" />
                 </LinearLayout>
 
-                <LinearLayout android:orientation="vertical">
+                <LinearLayout android:orientation="vertical"  android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -148,7 +148,7 @@
                         android:text="0 р" />
                 </LinearLayout>
 
-                <LinearLayout android:orientation="vertical">
+                <LinearLayout android:orientation="vertical" android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -177,7 +177,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout android:orientation="vertical">
+                <LinearLayout android:orientation="vertical"  android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -200,7 +200,7 @@
                         android:text="0 р" />
                 </LinearLayout>
 
-                <LinearLayout android:orientation="vertical">
+                <LinearLayout android:orientation="vertical"  android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -223,18 +223,18 @@
                         android:text="0 р" />
                 </LinearLayout>
 
-                <LinearLayout android:orientation="vertical">
+                <LinearLayout android:orientation="vertical"  android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Продукты" />
+                        android:text="Транспорт" />
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@mipmap/ic_food_foreground"
-                        app:cb_color="#6780FF"
+                        android:src="@mipmap/ic_bus_foreground"
+                        app:cb_color="#FFC667"
                         app:cb_pressedRingWidth="4dp" />
 
                     <TextView
@@ -245,18 +245,19 @@
                         android:text="0 р" />
                 </LinearLayout>
 
-                <LinearLayout android:orientation="vertical">
+                <LinearLayout android:orientation="vertical"  android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Продукты" />
+                        android:layout_gravity="center"
+                        android:text="Покупки" />
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@mipmap/ic_food_foreground"
-                        app:cb_color="#6780FF"
+                        android:src="@mipmap/ic_shopping_foreground"
+                        app:cb_color="#A8A8A8"
                         app:cb_pressedRingWidth="4dp" />
 
                     <TextView
