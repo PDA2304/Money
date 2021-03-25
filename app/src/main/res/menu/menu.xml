@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showin="navigation_view">
+
     <item
         android:id="@+id/item_invoices"
-        android:title="Счета"/>
-
+        android:title="Счета"
+        android:icon="@drawable/credit_card"
+        />
+    <item
+        android:id="@+id/item_categories"
+        android:icon="@drawable/categories"
+        android:title="Категории"/>
+    <item
+        android:id="@+id/item_operations"
+        android:icon="@drawable/operations"
+        android:title="Операции"/>
+    <item
+        android:id="@+id/item_profile"
+        android:icon="@drawable/profile"
+        android:title="Профиль"/>
 </menu>

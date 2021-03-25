@@ -6,71 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.github.florent37.shapeofview.shapes.ArcView
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/blue"
-        android:elevation="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shape_arc_cropDirection="outside"
-        app:shape_arc_height="30dp"
-        app:shape_arc_position="bottom">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/blue" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Все счета"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="1 - 7 марта 2021"
-                android:textColor="@color/white" />
-        </LinearLayout>
-
-    </com.github.florent37.shapeofview.shapes.ArcView>
-
+    <!--Header Приложения который вызывается при помощи include из другого файла-->
+    <include
+        android:id="@+id/include"
+        layout="@layout/appbar" />
+    <!--Фрагмент в который выводится layout по нажатой кнопки bottomnavigation -->
     <fragment
         android:id="@+id/navigation"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/nav_graph"
-        app:layout_constraintTop_toBottomOf="@+id/header" />
-
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:navGraph="@navigation/nav_graph" />
+    <!--BottomNavigationView панель для навигации-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:foreground="?attr/selectableItemBackground"
+        android:layout_height="45dp"
+        android:theme="@style/Widget.BottomNavigationView"
         app:itemBackground="@color/blue"
+        app:itemIconTint="@color/white"
+        android:foreground="?attr/selectableItemBackground"
         app:itemTextColor="@color/white"
-        
         app:labelVisibilityMode="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu"
-        />
+        app:menu="@menu/menu"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

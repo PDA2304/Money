@@ -3,14 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/blankFragment">
-
-
+    app:startDestination="@id/item_categories">
     <fragment
-        android:id="@+id/blankFragment"
+        android:id="@+id/item_invoices"
         android:name="com.example.money.InvoicesFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_invoices" >
+    </fragment>
+    <fragment
+        android:id="@+id/item_categories"
+        android:name="com.example.money.CategoriesFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_categories" >
+    </fragment>
+    <fragment
+        android:id="@+id/item_operations"
+        android:name="com.example.money.OperationsFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_operations" >
+    </fragment>
+    <fragment
+        android:id="@+id/item_profile"
+        android:name="com.example.money.ProfileFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_profile" >
     </fragment>
 
 </navigation>
