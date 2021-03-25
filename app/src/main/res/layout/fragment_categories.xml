@@ -84,6 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:text="Продукты" />
 
                     <at.markushi.ui.CircleButton
@@ -106,13 +107,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Продукты" />
+                        android:text="Кафе"
+                        android:layout_gravity="center"/>
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@mipmap/ic_food_foreground"
-                        app:cb_color="#6780FF"
+                        android:src="@mipmap/ic_cafe_foreground"
+                        app:cb_color="#C267FF"
                         app:cb_pressedRingWidth="4dp" />
 
                     <TextView
