@@ -15,7 +15,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:elevation="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,7 +28,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white"/>
+                android:background="@color/white" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -40,26 +41,15 @@
                     android:layout_height="wrap_content"
                     android:text="Расходы"
                     android:textColor="@color/black" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:text="0 Р"
+                    android:textColor="#FF0000" />
 
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="5dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Доходы"
-                    android:textColor="@color/black" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 Р"
-
-                    android:textColor="@color/black" />
             </LinearLayout>
 
 
@@ -67,25 +57,25 @@
 
         <TableLayout
             android:id="@+id/tableLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header"
+            >
 
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout android:orientation="vertical" android:padding="5dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Продукты" />
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
@@ -98,17 +88,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="0 р" />
-                </LinearLayout>
-
-                <LinearLayout android:orientation="vertical"  android:padding="5dp">
+                        android:text="Продукты" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Кафе"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0 р" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
@@ -121,17 +114,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="0 р" />
-                </LinearLayout>
-
-                <LinearLayout android:orientation="vertical"  android:padding="5dp">
+                        android:text="Кафе" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Семья" />
+                        android:gravity="center"
+                        android:text="0 р" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
@@ -144,17 +141,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="0 р" />
-                </LinearLayout>
-
-                <LinearLayout android:orientation="vertical" android:padding="5dp">
+                        android:text="Семья" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Здоровье" />
+                        android:gravity="center"
+                        android:text="0 р" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
@@ -167,8 +167,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:text="Здоровье" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="0 р"/>
+                        android:text="0 р" />
                 </LinearLayout>
 
             </TableRow>
@@ -177,13 +183,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout android:orientation="vertical"  android:padding="5dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Подарки" />
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
@@ -196,17 +199,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="0 р" />
-                </LinearLayout>
-
-                <LinearLayout android:orientation="vertical"  android:padding="5dp">
+                        android:text="Подарки" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Досуг" />
+                        android:gravity="center"
+                        android:text="0 р" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
@@ -219,16 +225,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="0 р" />
-                </LinearLayout>
-
-                <LinearLayout android:orientation="vertical"  android:padding="5dp">
+                        android:text="Досуг" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Транспорт" />
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0 р" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
@@ -240,18 +250,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="0 р" />
-                </LinearLayout>
-
-                <LinearLayout android:orientation="vertical"  android:padding="5dp">
+                        android:text="Транспорт" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Покупки" />
+                        android:gravity="center"
+                        android:text="0 р" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
 
                     <at.markushi.ui.CircleButton
                         android:layout_width="70dp"
@@ -259,6 +271,12 @@
                         android:src="@mipmap/ic_shopping_foreground"
                         app:cb_color="#A8A8A8"
                         app:cb_pressedRingWidth="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Покупки" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -272,6 +290,7 @@
 
 
         </TableLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
