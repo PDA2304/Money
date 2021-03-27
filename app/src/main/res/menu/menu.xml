@@ -10,7 +10,7 @@
         android:icon="@drawable/credit_card"
         />
     <item
-        android:id="@+id/item_categories"
+        android:id="@+id/item_categoriesFragmentExpense"
         android:icon="@drawable/categories"
         android:title="Категории"/>
     <item

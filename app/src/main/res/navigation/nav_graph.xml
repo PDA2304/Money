@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/item_categories">
+    app:startDestination="@id/item_categoriesFragmentExpense">
     <fragment
         android:id="@+id/item_invoices"
         android:name="com.example.money.fragment.InvoicesFragment"
@@ -11,13 +11,13 @@
         tools:layout="@layout/fragment_invoices" >
     </fragment>
     <fragment
-        android:id="@+id/item_categories"
-        android:name="com.example.money.fragment.CategoriesFragment"
+        android:id="@+id/item_categoriesFragmentExpense"
+        android:name="com.example.money.fragment.CategoriesFragmentExpense"
         android:label="fragment_blank"
-        tools:layout="@layout/fragment_categories" >
+        tools:layout="@layout/fragment_categories_expense" >
         <action
-            android:id="@+id/action_item_categories_to_categoriesFragment2"
-            app:destination="@id/categoriesFragment2" />
+            android:id="@+id/action_item_categoriesFragmentExpense_to_categoriesFragmentIncome"
+            app:destination="@id/categoriesFragmentIncome" />
     </fragment>
     <fragment
         android:id="@+id/item_operations"
@@ -32,13 +32,13 @@
         tools:layout="@layout/fragment_profile" >
     </fragment>
     <fragment
-        android:id="@+id/categoriesFragment2"
-        android:name="com.example.money.fragment.CategoriesFragment2"
+        android:id="@+id/categoriesFragmentIncome"
+        android:name="com.example.money.fragment.CategoriesFragmentIncome"
         android:label="CategoriesFragment2"
-        tools:layout="@layout/fragment_categories2">
+        tools:layout="@layout/fragment_categories_income">
         <action
-            android:id="@+id/action_categoriesFragment2_to_item_categories"
-            app:destination="@id/item_categories" />
+            android:id="@+id/action_categoriesFragmentIncome_to_item_categoriesFragmentExpense"
+            app:destination="@id/item_categoriesFragmentExpense" />
     </fragment>
 
 
