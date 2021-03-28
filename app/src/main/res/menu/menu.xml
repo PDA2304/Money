@@ -14,7 +14,7 @@
         android:icon="@drawable/categories"
         android:title="Категории"/>
     <item
-        android:id="@+id/item_operations"
+        android:id="@+id/item_operationsFragment"
         android:icon="@drawable/operations"
         android:title="Операции"/>
     <item

@@ -20,10 +20,13 @@
             app:destination="@id/categoriesFragmentIncome" />
     </fragment>
     <fragment
-        android:id="@+id/item_operations"
+        android:id="@+id/item_operationsFragment"
         android:name="com.example.money.fragment.OperationsFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_operations" >
+        <action
+            android:id="@+id/action_item_operationsFragment_to_statisticFragmentExpense"
+            app:destination="@id/statisticFragmentExpense" />
     </fragment>
     <fragment
         android:id="@+id/item_profile"
@@ -39,6 +42,30 @@
         <action
             android:id="@+id/action_categoriesFragmentIncome_to_item_categoriesFragmentExpense"
             app:destination="@id/item_categoriesFragmentExpense" />
+    </fragment>
+    <fragment
+        android:id="@+id/statisticFragmentExpense"
+        android:name="com.example.money.fragment.StatisticFragmentExpense"
+        android:label="fragment_statistic_expense"
+        tools:layout="@layout/fragment_statistic_expense">
+        <action
+            android:id="@+id/action_statisticFragmentExpense_to_item_operationsFragment"
+            app:destination="@id/item_operationsFragment" />
+        <action
+            android:id="@+id/action_statisticFragmentExpense_to_statisticFragmentIncome2"
+            app:destination="@id/statisticFragmentIncome" />
+    </fragment>
+    <fragment
+        android:id="@+id/statisticFragmentIncome"
+        android:name="com.example.money.fragment.StatisticFragmentIncome"
+        android:label="fragment_statistic_income"
+        tools:layout="@layout/fragment_statistic_income" >
+        <action
+            android:id="@+id/action_statisticFragmentIncome_to_item_operationsFragment"
+            app:destination="@id/item_operationsFragment" />
+        <action
+            android:id="@+id/action_statisticFragmentIncome_to_statisticFragmentExpense2"
+            app:destination="@id/statisticFragmentExpense" />
     </fragment>
 
 

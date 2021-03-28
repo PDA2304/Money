@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.navigation.Navigation
 import com.example.money.R
+import com.github.florent37.shapeofview.shapes.CircleView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,6 +31,7 @@ class OperationsFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -35,7 +39,15 @@ class OperationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_operations, container, false)
+        var view = inflater.inflate(R.layout.fragment_operations, container, false)
+
+        var btn: TextView = view.findViewById(R.id.text_operations_statistic)
+        btn.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_item_operationsFragment_to_statisticFragmentExpense)
+        }
+
+        return view
     }
 
     companion object {
