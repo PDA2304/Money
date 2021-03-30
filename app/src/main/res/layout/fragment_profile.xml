@@ -73,18 +73,16 @@
         </LinearLayout>
 
         <Button
+            style="@style/Button_Profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_profile"
             android:text="Изменить пароль" />
 
         <Button
             style="@style/Button_Profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Удалить данные"
-            android:textColor="@color/red">
+            android:text="Удалить данные">
 
         </Button>
     </LinearLayout>
