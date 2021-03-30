@@ -21,6 +21,7 @@
         android:background="@color/blue" />
 
     <LinearLayout
+        android:id="@+id/linear_baze"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -37,6 +38,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="1 - 7 марта 2021"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/linear_profile"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/text_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:text="Профиль"
             android:textColor="@color/white" />
     </LinearLayout>
 
