@@ -29,7 +29,7 @@
         android:theme="@style/Widget.BottomNavigationView"
         app:itemBackground="@color/blue"
         app:itemIconTint="@color/white"
-        android:foreground="?attr/selectableItemBackground"
+        android:background="@color/blue"
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="auto"
         app:layout_constraintBottom_toBottomOf="parent"

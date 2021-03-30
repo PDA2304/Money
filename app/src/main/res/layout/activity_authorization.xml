@@ -63,7 +63,7 @@
         <com.google.android.material.textfield.TextInputEditText
             style="@style/Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:background="@drawable/edit_text"
             android:hint="Пароль"
             android:inputType="textPassword" />

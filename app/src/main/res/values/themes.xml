@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Money" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Money" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -61,6 +61,10 @@
     <style name="Widget.BottomNavigationView"
         parent="Widget.Design.BottomNavigationView">
         <item name="fontFamily">@font/opensansregular</item>
+    </style>
+
+    <style name="Button_Profile" >
+        <item name="android:background">@drawable/button_profile</item>
     </style>
 
 
