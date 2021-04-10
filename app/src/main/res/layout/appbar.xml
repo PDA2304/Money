@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/header"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="70dp"
     android:background="@color/blue"
     android:elevation="1dp"
 
@@ -69,12 +69,13 @@
             android:id="@+id/linear_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="visible"
             android:layout_gravity="center_horizontal"
-            android:paddingBottom="10dp">
+            android:paddingBottom="5dp">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@mipmap/ic_triangle_foreground" />
 
             <TextView
@@ -84,7 +85,7 @@
                 android:fontFamily="@font/opensanslightitalic"
                 android:text="29 мар - 4 апр 2021"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -97,7 +98,7 @@
         android:visibility="gone">
 
         <TextView
-            android:id="@+id/text_profile"
+            android:id="@+id/text_profile_invoice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"

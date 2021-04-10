@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity(), OnDataTextDate {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var linear_date = findViewById<LinearLayout>(R.id.linear_date)
+
         val navController = Navigation.findNavController(this, R.id.navigation)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
@@ -28,15 +30,28 @@ class MainActivity : AppCompatActivity(), OnDataTextDate {
             var linear_prof = findViewById<LinearLayout>(R.id.linear_profile)
             var linear_baze = findViewById<LinearLayout>(R.id.linear_baze)
 
+
+
             when (item.itemId) {
                 R.id.item_profile -> {
                     linear_prof.visibility = View.VISIBLE
                     linear_baze.visibility = View.GONE
-                    Log.i("ID_ID", "TEST")
+                    text_profile_invoice.text = "Профиль"
+                }
+                R.id.item_categoriesFragmentExpense -> {
+                    linear_date.visibility = View.GONE
+                    linear_prof.visibility = View.GONE
+                    linear_baze.visibility = View.VISIBLE
+                }
+                R.id.item_invoices -> {
+                    linear_prof.visibility = View.VISIBLE
+                    linear_baze.visibility = View.GONE
+                    text_profile_invoice.text = "Счета"
                 }
                 else -> {
                     linear_prof.visibility = View.GONE
                     linear_baze.visibility = View.VISIBLE
+                    linear_date.visibility = View.VISIBLE
                 }
             }
             return@setOnNavigationItemSelectedListener true
