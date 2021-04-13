@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
-import com.example.money.OnDataTextDate
+import com.example.money.OnSaveData
 import com.example.money.R
 import kotlinx.android.synthetic.main.dialog_fragment_date.*
 import java.text.DateFormat
@@ -23,7 +23,7 @@ class DialogFragmentDate : DialogFragment() {
     var df: DateFormat? = null
 
     //Переменная которая в себе хранит Interface
-    private var onDataTextDate: OnDataTextDate? = null
+    private var onDataTextDate: OnSaveData? = null
 
     //Переменная которая хранит в себе состояние даты
     val c = Calendar.getInstance()
@@ -112,7 +112,6 @@ class DialogFragmentDate : DialogFragment() {
         df = SimpleDateFormat("dd MMM")
         val date = Date()
         c.time = date
-        c.add(Calendar.DAY_OF_MONTH,-7)
         c[Calendar.DAY_OF_WEEK] = Calendar.MONDAY
         var monday = c.time
 
@@ -125,7 +124,7 @@ class DialogFragmentDate : DialogFragment() {
 
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
-        onDataTextDate = activity as OnDataTextDate
+        onDataTextDate = activity as OnSaveData
     }
 }
 
