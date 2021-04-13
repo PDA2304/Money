@@ -1,5 +1,7 @@
 package com.example.money
 
-interface OnDataTextDate {
+interface OnSaveData {
     fun onDateText(data: String?)
+
+    fun onIdInvoiceSave(id: Long)
 }
