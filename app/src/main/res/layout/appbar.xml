@@ -47,6 +47,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/Name_Invoice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/opensanslightitalic"
@@ -55,6 +56,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/Cost_Invoice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/opensanslightitalic"
