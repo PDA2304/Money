@@ -60,11 +60,11 @@
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <ListView
+            android:id="@+id/dialog_listview_invoice"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-        </androidx.recyclerview.widget.RecyclerView>
+        </ListView>
     </LinearLayout>
 </LinearLayout>

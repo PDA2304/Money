@@ -2,14 +2,17 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+
+    >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="5dp"
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/Image_Type_Invoice"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@color/blue"
@@ -24,15 +27,19 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/Name_Invoice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Название счета" />
 
             <TextView
+                android:id="@+id/Cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="000000 Р" />
         </LinearLayout>
-    </LinearLayout>
 
+
+
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
