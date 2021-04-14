@@ -1,13 +1,14 @@
 package com.example.money
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.example.money.`interface`.OnSaveData
+import com.example.money.data_base.DatabaseHelper
 import com.example.money.fragment.CategoriesFragmentExpense
 import com.example.money.fragment.DialogFragmentDate
 import com.example.money.fragment.DialogFragmentInvoices
@@ -17,10 +18,12 @@ import kotlinx.android.synthetic.main.appbar.*
 import kotlinx.android.synthetic.main.dialog_fragment_invoices.*
 
 
-class MainActivity : AppCompatActivity(), OnSaveData{
+class MainActivity : AppCompatActivity(), OnSaveData {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
         var linear_date = findViewById<LinearLayout>(R.id.linear_date)
 
@@ -67,7 +70,6 @@ class MainActivity : AppCompatActivity(), OnSaveData{
             DialogFragmentInvoices.show(supportFragmentManager, "Invoices")
 
 
-
         }
         linear_date.setOnClickListener { view ->
             var DialogFragmentDate = DialogFragmentDate()
@@ -94,6 +96,6 @@ class MainActivity : AppCompatActivity(), OnSaveData{
 
         Name_Invoice.text = test[id!!.toInt()].Name
         Cost_Invoice.text = test[id!!.toInt()].Cost.toString()
-        DialogFragmentInvoices.select(id.toInt(),this)
+        DialogFragmentInvoices.select(id.toInt(), this)
     }
 }

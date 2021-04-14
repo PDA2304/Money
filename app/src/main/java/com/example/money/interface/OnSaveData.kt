@@ -1,4 +1,4 @@
-package com.example.money
+package com.example.money.`interface`
 
 interface OnSaveData {
     fun onDateText(data: String?)

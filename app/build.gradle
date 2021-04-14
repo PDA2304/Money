@@ -57,5 +57,7 @@ dependencies {
         compile 'com.github.markushi:circlebutton:1.1'
     //Для создания Header
     implementation 'com.github.florent37:shapeofview:1.3.2'
+    //Библиотека для переноса данных из созданной БД в мобильное приложение
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
 }
 

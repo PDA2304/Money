@@ -1,14 +1,12 @@
-package com.example.money
+package com.example.money.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import com.example.money.R
 import com.example.money.model.Invoice
 
 class ListView_Adapter_Invoice(

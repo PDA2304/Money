@@ -5,12 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.example.money.ListView_Adapter_Invoice
-import com.example.money.OnDataTextDate
+import com.example.money.adapter.ListView_Adapter_Invoice
 import com.example.money.R
+import com.example.money.`interface`.OnSaveData
 import com.example.money.model.Invoice
 import kotlinx.android.synthetic.main.dialog_fragment_invoices.*
 
@@ -32,11 +31,11 @@ class DialogFragmentInvoices : DialogFragment() {
         return view
     }
 
-    private var onDataTextDate: OnDataTextDate? = null
+    private var onDataTextDate: OnSaveData? = null
 
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
-        onDataTextDate = activity as OnDataTextDate
+        onDataTextDate = activity as OnSaveData
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
