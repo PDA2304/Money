@@ -12,7 +12,7 @@ import android.widget.RelativeLayout
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import com.example.money.R
-import com.example.money.`interface`.OnSaveData
+import com.example.money.OnSaveData
 import kotlinx.android.synthetic.main.dialog_fragment_date.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
