@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
+import com.example.money.OnSaveData
 import com.example.money.R
 import com.github.florent37.shapeofview.shapes.CircleView
+import kotlinx.android.synthetic.main.appbar.*
 
-class CategoriesFragmentExpense : Fragment() {
+class CategoriesFragmentExpense : Fragment(), OnSaveData {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -39,6 +41,13 @@ class CategoriesFragmentExpense : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
+
+    override fun onDateText(data: String?) {
+        text_date.text = data!!.toUpperCase()
+    }
+
+    override fun onIdInvoiceSave(id: Long) {
     }
 
 }

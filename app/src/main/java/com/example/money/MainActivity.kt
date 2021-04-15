@@ -7,8 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.example.money.`interface`.OnSaveData
-import com.example.money.data_base.DatabaseHelper
 import com.example.money.fragment.CategoriesFragmentExpense
 import com.example.money.fragment.DialogFragmentDate
 import com.example.money.fragment.DialogFragmentInvoices
@@ -16,9 +14,10 @@ import com.example.money.model.Invoice
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.appbar.*
 import kotlinx.android.synthetic.main.dialog_fragment_invoices.*
+import kotlinx.android.synthetic.main.fragment_invoices.*
 
 
-class MainActivity : AppCompatActivity(), OnSaveData {
+class MainActivity : AppCompatActivity(), OnSaveData{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -75,8 +74,6 @@ class MainActivity : AppCompatActivity(), OnSaveData {
             var DialogFragmentDate = DialogFragmentDate()
             DialogFragmentDate.show(supportFragmentManager, "Date")
         }
-
-
     }
 
 
@@ -89,13 +86,5 @@ class MainActivity : AppCompatActivity(), OnSaveData {
     }
 
     override fun onIdInvoiceSave(id: Long) {
-        var DialogFragmentInvoices = CategoriesFragmentExpense()
-        var test = ArrayList<Invoice>()
-        test.add(Invoice(1, "Наличные", 1, 1000))
-        test.add(Invoice(2, "Сбербанк", 2, 10000))
-
-        Name_Invoice.text = test[id!!.toInt()].Name
-        Cost_Invoice.text = test[id!!.toInt()].Cost.toString()
-        DialogFragmentInvoices.select(id.toInt(), this)
     }
 }

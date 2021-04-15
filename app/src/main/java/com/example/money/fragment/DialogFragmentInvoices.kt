@@ -7,16 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.money.InvoiceResultCallBacks
 import com.example.money.adapter.ListView_Adapter_Invoice
 import com.example.money.R
-import com.example.money.`interface`.OnSaveData
-import com.example.money.model.Invoice
+import com.example.money.OnSaveData
+import com.example.money.adapter.Invoice_Adapter
+import com.example.money.factory.InvoiceViewModelFactory
+import com.example.money.viewmodel.InvoiceViewModel
 import kotlinx.android.synthetic.main.dialog_fragment_invoices.*
 
 
-class DialogFragmentInvoices : DialogFragment() {
-
-    var adapter: ListView_Adapter_Invoice? = null
+class DialogFragmentInvoices : DialogFragment(), InvoiceResultCallBacks {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,28 +34,51 @@ class DialogFragmentInvoices : DialogFragment() {
         return view
     }
 
-    private var onDataTextDate: OnSaveData? = null
+    private var onSaveData: OnSaveData? = null
 
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
-        onDataTextDate = activity as OnSaveData
+        onSaveData = activity as OnSaveData
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var test = ArrayList<Invoice>()
-        test.add(Invoice(1, "Наличные", 1, 1000))
-        test.add(Invoice(2, "Сбербанк", 2, 10000))
+        var viewmodel =
+            ViewModelProvider(this, InvoiceViewModelFactory(this, view.context)).get(
+                InvoiceViewModel::class.java
+            )
 
-        dialog_listview_invoice.setOnItemClickListener { parent, view, position, id ->
-            Toast.makeText(view.context, "$id", Toast.LENGTH_SHORT).show()
-            onDataTextDate!!.onIdInvoiceSave(id)
+        all_invoice.setOnClickListener {
+            onSaveData!!.onIdInvoiceSave(1)
             dismiss()
         }
 
-        adapter = ListView_Adapter_Invoice(view.context, test)
-        dialog_listview_invoice.adapter = adapter
-        adapter?.notifyDataSetChanged()
+        if (viewmodel.Cost() < 0) {
+            cost_all_invoice.setTextColor(resources.getColor(R.color.red))
+        } else {
+            cost_all_invoice.setTextColor(resources.getColor(R.color.green))
+        }
+
+        cost_all_invoice.text = viewmodel.Cost().toString() + " P"
+
+        dialog_listview_invoice.also {
+            it.layoutManager = LinearLayoutManager(view.context)
+            it.setHasFixedSize(true)
+            it.adapter = Invoice_Adapter(
+                viewmodel.InvoiceShow(), view.context
+            )
+            {
+
+            }
+        }
+    }
+
+    override fun onError(message: String) {
+        Toast.makeText(this.context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onSucces(message: String) {
+        Toast.makeText(this.context, message, Toast.LENGTH_SHORT).show()
     }
 
 }
