@@ -7,10 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.example.money.fragment.CategoriesFragmentExpense
 import com.example.money.fragment.DialogFragmentDate
 import com.example.money.fragment.DialogFragmentInvoices
-import com.example.money.model.Invoice
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.appbar.*
 import kotlinx.android.synthetic.main.dialog_fragment_invoices.*
@@ -44,7 +42,7 @@ class MainActivity : AppCompatActivity(), OnSaveData{
                     text_profile_invoice.text = "Профиль"
                 }
                 R.id.item_categoriesFragmentExpense -> {
-                    linear_date.visibility = View.GONE
+                    linear_date.visibility = View.VISIBLE
                     linear_prof.visibility = View.GONE
                     linear_baze.visibility = View.VISIBLE
                 }
