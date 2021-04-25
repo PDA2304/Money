@@ -1,24 +1,23 @@
 package com.example.money.fragment
 
-import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.res.ColorStateList
-import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.money.R
 import com.example.money.InvoiceResultCallBacks
+import com.example.money.R
 import com.example.money.adapter.Invoice_Adapter
 import com.example.money.factory.InvoiceViewModelFactory
 import com.example.money.viewmodel.InvoiceViewModel
 import kotlinx.android.synthetic.main.fragment_invoices.*
+
 
 class InvoicesFragment : Fragment(), InvoiceResultCallBacks {
 
@@ -58,7 +57,13 @@ class InvoicesFragment : Fragment(), InvoiceResultCallBacks {
             )
             {
 
+
             }
+        }
+
+        add_invoice.setOnClickListener {
+            var dialog = DialogFragmentAddInvoice()
+            dialog.show(parentFragmentManager,"AddInvoices")
         }
     }
 
