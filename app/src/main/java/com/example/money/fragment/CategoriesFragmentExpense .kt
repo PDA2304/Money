@@ -15,9 +15,6 @@ import com.github.florent37.shapeofview.shapes.CircleView
 import kotlinx.android.synthetic.main.appbar.*
 
 class CategoriesFragmentExpense : Fragment(), OnSaveData {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_categories_expense, container, false)
@@ -38,6 +35,7 @@ class CategoriesFragmentExpense : Fragment(), OnSaveData {
             Toast.makeText(context, id.toString(), Toast.LENGTH_SHORT).show()
         }
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
