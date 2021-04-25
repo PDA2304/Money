@@ -1,4 +1,4 @@
-package com.example.money.fragment
+package com.example.money.fragment.Dialog
 
 import android.app.Activity
 import android.os.Bundle
@@ -10,7 +10,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.money.InvoiceResultCallBacks
-import com.example.money.adapter.ListView_Adapter_Invoice
 import com.example.money.R
 import com.example.money.OnSaveData
 import com.example.money.adapter.Invoice_Adapter

@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.example.money.fragment.DialogFragmentDate
-import com.example.money.fragment.DialogFragmentInvoices
+import com.example.money.fragment.Dialog.DialogFragmentDate
+import com.example.money.fragment.Dialog.DialogFragmentInvoices
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.appbar.*
 import kotlinx.android.synthetic.main.dialog_fragment_invoices.*

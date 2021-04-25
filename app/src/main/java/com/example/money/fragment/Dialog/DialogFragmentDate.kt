@@ -1,4 +1,4 @@
-package com.example.money.fragment
+package com.example.money.fragment.Dialog
 
 import android.annotation.SuppressLint
 import android.app.Activity

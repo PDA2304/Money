@@ -1,4 +1,4 @@
-package com.example.money.fragment
+package com.example.money.fragment.Dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
