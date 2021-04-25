@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -41,13 +40,22 @@
                 tools:text="100 P" />
         </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_invoice_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp" />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="7dp"
-                android:id="@+id/fragment_invoice_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                 />
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_invoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/blue"
+        android:clickable="true"
+        android:src="@drawable/ic_add_invoice" />
 </FrameLayout>
