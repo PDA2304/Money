@@ -1,89 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fragment.ProfileFragment">
+    android:padding="15dp"
+    tools:context=".fragment.ProfileFragment">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        style="@style/CardViewProfile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Никнейм" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="PDA" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Почта" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="isip_d.a.pahomov@mpt.ru" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Уведомление" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@mipmap/ic_notification_foreground" />
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/user" />
 
-                <TextView
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Имя пользователя" />
+
+                    <TextView
+                        style="@style/Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PDA" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/information" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/email" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Почта" />
+
+                    <TextView
+                        style="@style/Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="isip_d.a.pahomov@mpt.ru" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/information" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/notification" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Уведомление" />
+
+
+                        <TextView
+                            style="@style/Text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="20:00" />
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/chip4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:theme="@style/MySwitch" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/application" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="20:00"
-                    android:textColor="@color/blue"
-                    android:textSize="18sp" />
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical">
 
-
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="" />
+                    <TextView
+                        style="@style/Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="О приложении" />
+                </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/information" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/exit" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Вход" />
+                </LinearLayout>
+            </LinearLayout>
+
 
         </LinearLayout>
 
-        <Button
-            style="@style/Button_Profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Изменить пароль" />
+    </androidx.cardview.widget.CardView>
 
-        <Button
-            style="@style/Button_Profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Удалить данные">
+    <Button
+        android:id="@+id/delete_data"
+        style="@style/Button"
+        android:layout_width="match_parent"
+        android:text="Удалить данные"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/password_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        </Button>
-    </LinearLayout>
-</FrameLayout>
+    <Button
+        android:id="@+id/password_edit"
+        style="@style/Button"
+        android:layout_width="match_parent"
+        android:text="Изменить пароль"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

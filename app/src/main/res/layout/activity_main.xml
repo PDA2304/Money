@@ -4,38 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
-    <!--Header Приложения который вызывается при помощи include из другого файла-->
     <include
-        android:id="@+id/include"
-        layout="@layout/appbar" />
-    <!--Фрагмент в который выводится layout по нажатой кнопки bottomnavigation -->
+        android:id="@+id/toolbar_actionbar"
+        layout="@layout/toolbar" />
+
+
     <fragment
+        app:navGraph="@navigation/nav_graph"
         android:id="@+id/navigation"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include"
-        app:navGraph="@navigation/nav_graph" />
-    <!--BottomNavigationView панель для навигации-->
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_actionbar" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
+        style="@style/BottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:theme="@style/Widget.BottomNavigationView"
-        app:itemBackground="@color/blue"
-        app:itemIconTint="@color/white"
-        android:background="@color/blue"
-        app:itemTextColor="@color/white"
+        android:layout_height="wrap_content"
         app:labelVisibilityMode="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu"/>
-
+        app:menu="@menu/menu_item_bottomnavigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

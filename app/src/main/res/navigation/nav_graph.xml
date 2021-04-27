@@ -3,70 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/item_categoriesFragmentExpense">
+    app:startDestination="@id/categoriesFragment">
+
     <fragment
-        android:id="@+id/item_invoices"
-        android:name="com.example.money.fragment.InvoicesFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_invoices" >
-    </fragment>
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.PDAmoney.fragment.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" />
     <fragment
-        android:id="@+id/item_categoriesFragmentExpense"
-        android:name="com.example.money.fragment.CategoriesFragmentExpense"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_categories_expense" >
-        <action
-            android:id="@+id/action_item_categoriesFragmentExpense_to_categoriesFragmentIncome"
-            app:destination="@id/categoriesFragmentIncome" />
-    </fragment>
+        android:id="@+id/invoiceFragment"
+        android:name="com.example.PDAmoney.fragment.InvoiceFragment"
+        android:label="fragment_invoice"
+        tools:layout="@layout/fragment_invoice" />
     <fragment
-        android:id="@+id/item_operationsFragment"
-        android:name="com.example.money.fragment.OperationsFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_operations" >
-        <action
-            android:id="@+id/action_item_operationsFragment_to_statisticFragmentExpense"
-            app:destination="@id/statisticFragmentExpense" />
-    </fragment>
+        android:id="@+id/profileFragment"
+        android:name="com.example.PDAmoney.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/item_profile"
-        android:name="com.example.money.fragment.ProfileFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_profile" >
-    </fragment>
+        android:id="@+id/operationsFragment"
+        android:name="com.example.PDAmoney.fragment.OperationsFragment"
+        android:label="fragment_operations"
+        tools:layout="@layout/fragment_operations" />
     <fragment
-        android:id="@+id/categoriesFragmentIncome"
-        android:name="com.example.money.fragment.CategoriesFragmentIncome"
-        android:label="CategoriesFragment2"
-        tools:layout="@layout/fragment_categories_income">
-        <action
-            android:id="@+id/action_categoriesFragmentIncome_to_item_categoriesFragmentExpense"
-            app:destination="@id/item_categoriesFragmentExpense" />
-    </fragment>
-    <fragment
-        android:id="@+id/statisticFragmentExpense"
-        android:name="com.example.money.fragment.StatisticFragmentExpense"
-        android:label="fragment_statistic_expense"
-        tools:layout="@layout/fragment_statistic_expense">
-        <action
-            android:id="@+id/action_statisticFragmentExpense_to_item_operationsFragment"
-            app:destination="@id/item_operationsFragment" />
-        <action
-            android:id="@+id/action_statisticFragmentExpense_to_statisticFragmentIncome2"
-            app:destination="@id/statisticFragmentIncome" />
-    </fragment>
-    <fragment
-        android:id="@+id/statisticFragmentIncome"
-        android:name="com.example.money.fragment.StatisticFragmentIncome"
+        android:id="@+id/statisticIncomeFragment"
+        android:name="com.example.PDAmoney.fragment.StatisticIncomeFragment"
         android:label="fragment_statistic_income"
-        tools:layout="@layout/fragment_statistic_income" >
-        <action
-            android:id="@+id/action_statisticFragmentIncome_to_item_operationsFragment"
-            app:destination="@id/item_operationsFragment" />
-        <action
-            android:id="@+id/action_statisticFragmentIncome_to_statisticFragmentExpense2"
-            app:destination="@id/statisticFragmentExpense" />
-    </fragment>
-
-
+        tools:layout="@layout/fragment_statistic_income" />
+    <fragment
+        android:id="@+id/statisticInvoiceFragment"
+        android:name="com.example.PDAmoney.fragment.StatisticInvoiceFragment"
+        android:label="fragment_statistic_invoice"
+        tools:layout="@layout/fragment_statistic_invoice" />
 </navigation>
