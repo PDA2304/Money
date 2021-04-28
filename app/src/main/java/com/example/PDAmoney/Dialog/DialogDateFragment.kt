@@ -1,7 +1,6 @@
 package com.example.PDAmoney.Dialog
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
@@ -12,9 +11,8 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.PDAmoney.R
-import com.example.PDAmoney.OnSaveDateModel
+import com.example.PDAmoney.Model.OnSaveDateModel
 import kotlinx.android.synthetic.main.dialog_select_date.*
-import java.nio.channels.Selector
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
