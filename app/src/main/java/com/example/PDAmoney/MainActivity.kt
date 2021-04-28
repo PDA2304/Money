@@ -9,16 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.PDAmoney.Dialog.DialogDateFragment
-import com.example.PDAmoney.Dialog.OnSaveData
+import com.example.PDAmoney.Model.OnSaveDateModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_categories.*
 import kotlinx.android.synthetic.main.fragment_operations.*
 
 
 class MainActivity : AppCompatActivity() {
-
-
-     var model:OnSaveDateModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,8 +57,6 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnNavigationItemSelectedListener true
         }
-
-
 
     }
 

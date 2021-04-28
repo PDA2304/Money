@@ -1,4 +1,4 @@
-package com.example.PDAmoney.fragment
+package com.example.PDAmoney.Fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.example.PDAmoney.R
-import com.example.PDAmoney.OnSaveDateModel
+import com.example.PDAmoney.Model.OnSaveDateModel
 
 class OperationsFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.example.PDAmoney
+package com.example.PDAmoney.Model
 
 import android.content.ClipData
 import androidx.lifecycle.LiveData

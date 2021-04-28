@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.PDAmoney.fragment.CategoriesFragment"
+        android:name="com.example.PDAmoney.Fragment.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" />
     <fragment
         android:id="@+id/invoiceFragment"
-        android:name="com.example.PDAmoney.fragment.InvoiceFragment"
+        android:name="com.example.PDAmoney.Fragment.InvoiceFragment"
         android:label="fragment_invoice"
         tools:layout="@layout/fragment_invoice" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.PDAmoney.fragment.ProfileFragment"
+        android:name="com.example.PDAmoney.Fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/operationsFragment"
-        android:name="com.example.PDAmoney.fragment.OperationsFragment"
+        android:name="com.example.PDAmoney.Fragment.OperationsFragment"
         android:label="fragment_operations"
         tools:layout="@layout/fragment_operations" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/statisticIncomeFragment"
-        android:name="com.example.PDAmoney.fragment.StatisticIncomeFragment"
+        android:name="com.example.PDAmoney.Fragment.StatisticIncomeFragment"
         android:label="fragment_statistic_income"
         tools:layout="@layout/fragment_statistic_income" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/statisticInvoiceFragment"
-        android:name="com.example.PDAmoney.fragment.StatisticInvoiceFragment"
+        android:name="com.example.PDAmoney.Fragment.StatisticInvoiceFragment"
         android:label="fragment_statistic_invoice"
         tools:layout="@layout/fragment_statistic_invoice" >
         <action

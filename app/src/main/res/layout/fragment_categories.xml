@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="15dp"
 
-    tools:context=".fragment.CategoriesFragment">
+    tools:context=".Fragment.CategoriesFragment">
 
 
     <LinearLayout
