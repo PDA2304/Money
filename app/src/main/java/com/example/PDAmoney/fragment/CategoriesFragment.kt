@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.PDAmoney.R
 
 
@@ -17,6 +18,8 @@ class CategoriesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_categories, container, false)
+        var view = inflater.inflate(R.layout.fragment_categories, container, false)
+            Toast.makeText(view.context, "!", Toast.LENGTH_SHORT).show()
+        return view
     }
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.PDAmoney.R
 import kotlinx.android.synthetic.main.fragment_operations.*
@@ -22,7 +23,7 @@ class OperationsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_operations, container, false)
-
+        Toast.makeText(view.context, "!", Toast.LENGTH_SHORT).show()
         var btn = view.findViewById<Button>(R.id.btn_to_statistic)
         btn.setOnClickListener {
             Navigation.findNavController(it)
@@ -30,12 +31,4 @@ class OperationsFragment : Fragment() {
         }
         return view
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-
-    }
-
 }
