@@ -5,16 +5,20 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.PDAmoney.Dialog.DialogDateFragment
+import com.example.PDAmoney.Dialog.OnSaveData
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_categories.*
+import kotlinx.android.synthetic.main.fragment_operations.*
 
 
 class MainActivity : AppCompatActivity() {
 
+
+     var model:OnSaveDateModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -68,9 +73,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.date_select -> {
-             var selecc_date = DialogDateFragment()
+                var selecc_date = DialogDateFragment()
 
-                selecc_date.show(supportFragmentManager,"Date")
+                selecc_date.show(supportFragmentManager, "Date")
             }
             R.id.invoice_select -> {
                 Toast.makeText(this, "Счета", Toast.LENGTH_SHORT).show()

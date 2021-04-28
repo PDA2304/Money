@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content">
 
                 <TableRow
+                    android:id="@+id/select_date"
                     android:background="@drawable/linear_date"
 
                     android:layout_width="match_parent"
@@ -69,6 +70,7 @@
                 </TableRow>
 
                 <TableRow
+                    android:id="@+id/all_date"
                     android:background="@drawable/linear_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -101,6 +103,7 @@
                 android:layout_height="wrap_content">
 
                 <TableRow
+                    android:id="@+id/today"
                     android:background="@drawable/linear_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,6 +131,7 @@
                 </TableRow>
 
                 <TableRow
+                    android:id="@+id/week"
                     android:background="@drawable/linear_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -160,6 +164,7 @@
                 android:layout_height="wrap_content">
 
                 <TableRow
+                    android:id="@+id/month"
                     android:background="@drawable/linear_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -187,6 +192,7 @@
                 </TableRow>
 
                 <TableRow
+                    android:id="@+id/year"
                     android:background="@drawable/linear_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

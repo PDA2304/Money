@@ -6,12 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.example.PDAmoney.R
-import kotlinx.android.synthetic.main.fragment_operations.*
+import com.example.PDAmoney.OnSaveDateModel
 
 class OperationsFragment : Fragment() {
+
+    val model: OnSaveDateModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,5 +35,12 @@ class OperationsFragment : Fragment() {
                 .navigate(R.id.action_operationsFragment_to_statisticInvoiceFragment)
         }
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        model.savedate.observe(viewLifecycleOwner, Observer<String> { item ->
+            view.findViewById<TextView>(R.id.text_operations_date).text = item
+        })
     }
 }
