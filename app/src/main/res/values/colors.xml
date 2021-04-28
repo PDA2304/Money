@@ -12,4 +12,6 @@
     <color name="information">#898989</color>
 
     <color name="blue">#004FE6</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#02CF2F</color>
 </resources>

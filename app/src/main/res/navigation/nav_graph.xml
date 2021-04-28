@@ -24,15 +24,33 @@
         android:id="@+id/operationsFragment"
         android:name="com.example.PDAmoney.fragment.OperationsFragment"
         android:label="fragment_operations"
-        tools:layout="@layout/fragment_operations" />
+        tools:layout="@layout/fragment_operations" >
+        <action
+            android:id="@+id/action_operationsFragment_to_statisticInvoiceFragment"
+            app:destination="@id/statisticInvoiceFragment" />
+    </fragment>
     <fragment
         android:id="@+id/statisticIncomeFragment"
         android:name="com.example.PDAmoney.fragment.StatisticIncomeFragment"
         android:label="fragment_statistic_income"
-        tools:layout="@layout/fragment_statistic_income" />
+        tools:layout="@layout/fragment_statistic_income" >
+        <action
+            android:id="@+id/action_statisticIncomeFragment_to_statisticInvoiceFragment"
+            app:destination="@id/statisticInvoiceFragment" />
+        <action
+            android:id="@+id/action_statisticIncomeFragment_to_operationsFragment"
+            app:destination="@id/operationsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/statisticInvoiceFragment"
         android:name="com.example.PDAmoney.fragment.StatisticInvoiceFragment"
         android:label="fragment_statistic_invoice"
-        tools:layout="@layout/fragment_statistic_invoice" />
+        tools:layout="@layout/fragment_statistic_invoice" >
+        <action
+            android:id="@+id/action_statisticInvoiceFragment_to_statisticIncomeFragment"
+            app:destination="@id/statisticIncomeFragment" />
+        <action
+            android:id="@+id/action_statisticInvoiceFragment_to_operationsFragment"
+            app:destination="@id/operationsFragment" />
+    </fragment>
 </navigation>
