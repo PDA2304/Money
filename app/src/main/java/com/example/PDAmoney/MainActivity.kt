@@ -9,6 +9,7 @@ import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.example.PDAmoney.Dialog.DialogDateFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -67,7 +68,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.date_select -> {
-                Toast.makeText(this, "Календарь", Toast.LENGTH_SHORT).show()
+             var selecc_date = DialogDateFragment()
+
+                selecc_date.show(supportFragmentManager,"Date")
             }
             R.id.invoice_select -> {
                 Toast.makeText(this, "Счета", Toast.LENGTH_SHORT).show()
