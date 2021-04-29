@@ -35,7 +35,7 @@ class DataBaseHelper(var context: Context) :
         return instances
     }
 
-    @SuppressLint("Recycle")
+//    @SuppressLint("Recycle")
 //    fun Invoice(): ArrayList<Invoice> {
 //        db = openHelper.writableDatabase
 //        var arrayList = ArrayList<Invoice>()
@@ -43,7 +43,7 @@ class DataBaseHelper(var context: Context) :
 //        if (cursor.moveToFirst()) {
 //            do {
 //
-//                var invoice: Invoice = com.example.money.model.Invoice(0, "", 0, 0, 0)
+//                var invoice: Invoice = com.example.PDAmoney.Model.Invoice(0, "", 0, 0, 0)
 //                invoice.imageId = cursor.getInt(2)
 //                arrayList.add(
 //                    Invoice(

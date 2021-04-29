@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.PDAmoney.Dialog.DialogDateFragment
-import com.example.PDAmoney.Model.OnSaveDateModel
+//import com.example.PDAmoney.Model.OnSaveDateModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_categories.*
 import kotlinx.android.synthetic.main.fragment_operations.*

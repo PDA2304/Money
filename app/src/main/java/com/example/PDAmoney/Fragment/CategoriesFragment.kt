@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import com.example.PDAmoney.R
 import com.example.PDAmoney.Model.OnSaveDateModel
+import com.example.PDAmoney.R
 
 
 class CategoriesFragment : Fragment() {
@@ -32,10 +30,10 @@ class CategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val model: OnSaveDateModel by activityViewModels()
-        model.savedate.observe(viewLifecycleOwner, Observer<String> { item ->
-            view.findViewById<TextView>(R.id.text_categories_date).text = item
-        })
+        val model =  OnSaveDateModel()
+        view.findViewById<TextView>(R.id.text_categories_date).text  =model.savedate
+
+
     }
 
 }

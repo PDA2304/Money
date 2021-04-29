@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/invoice_select"
+        android:title="Счета"
+        android:icon="@drawable/invoice"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/date_select"
+        android:title="Дата"
+        android:icon="@drawable/ic_calendar_toolbar"
+        app:showAsAction="always" />
+
+</menu>

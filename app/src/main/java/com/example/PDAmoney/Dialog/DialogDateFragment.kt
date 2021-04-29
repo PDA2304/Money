@@ -10,8 +10,9 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import com.example.PDAmoney.R
 import com.example.PDAmoney.Model.OnSaveDateModel
+import com.example.PDAmoney.R
+//import com.example.PDAmoney.Model.OnSaveDateModel
 import kotlinx.android.synthetic.main.dialog_select_date.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -20,7 +21,7 @@ import java.util.*
 
 class DialogDateFragment : DialogFragment() {
 
-    private val model: OnSaveDateModel by activityViewModels()
+    private val model = OnSaveDateModel()
 
     var df: DateFormat? = null
 
@@ -70,14 +71,14 @@ class DialogDateFragment : DialogFragment() {
                     },
                     Year,
                     Month,
-                    Day,
+                    Day
                 )
                 dpd.setOnDismissListener {
                     model.onSaveDate(test)
                 }
                 dpd.show()
             }
-
+//
             model.onSaveDate(test)
 
             clickDataPicker(it)
