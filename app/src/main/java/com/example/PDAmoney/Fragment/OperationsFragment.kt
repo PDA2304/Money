@@ -38,8 +38,10 @@ class OperationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val model = OnSaveDateModel()
+        val model: OnSaveDateModel by activityViewModels()
 
-        view.findViewById<TextView>(R.id.text_operations_date).text = model.savedate
+        model.savedate.observe(viewLifecycleOwner, Observer<String> { item ->
+            view.findViewById<TextView>(R.id.text_operations_date).text = item
+        })
     }
 }

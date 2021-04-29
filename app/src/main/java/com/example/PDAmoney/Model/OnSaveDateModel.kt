@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModel
 import java.util.*
 
 class OnSaveDateModel() :ViewModel(){
-    var savedate : String = ""
+    val savedate = MutableLiveData<String>()
 
     fun onSaveDate(item: String) {
-        savedate = item
+        savedate.value = item
     }
 }
