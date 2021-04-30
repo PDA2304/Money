@@ -40,11 +40,16 @@
                 android:text="1000 Р" />
         </LinearLayout>
 
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_invoice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/text_max_invoice"

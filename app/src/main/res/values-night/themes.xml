@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Money" parent="Theme.Design.Light.NoActionBar">
+    <style name="Theme.Money" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -13,28 +13,4 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-
-    <style name="BottomNavigationView"  parent="Widget.Design.BottomNavigationView" >
-        <item name="android:itemBackground">@color/black</item>
-        <item name="itemIconTint">@color/white</item>
-        <item name="android:background">@color/black</item>
-        <item name="itemTextColor">@color/white</item>
-        <item name="labelVisibilityMode">auto</item>
-        <item name="itemTextAppearanceInactive">@style/TextStyleBNV</item>
-        <item name="itemTextAppearanceActive">@style/TextStyleBNV</item>
-    </style>
-
-    <style name="Toolbar">
-        <item name="android:background">@color/black</item>
-        <item name="titleTextColor">@color/white</item>
-    </style>
-
-    <style name="TextStyleBNV">
-        <item name="android:textSize">12sp</item>
-        <item name="android:padding">10dp</item>
-            <item name="android:layout_margin">15dp</item>
-        <item name="textAllCaps">false</item>
-    </style>
-
-
 </resources>
