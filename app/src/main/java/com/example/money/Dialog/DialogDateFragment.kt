@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import com.example.money.R
+import com.example.money.viewmodel.OnSaveDateViewModel
 import kotlinx.android.synthetic.main.dialog_select_date.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -18,7 +20,7 @@ import java.util.*
 
 class DialogDateFragment : DialogFragment() {
 
-//    private val model :  OnSaveDateModel by activityViewModels()
+    private val model  :  OnSaveDateViewModel by activityViewModels()
 
     var df: DateFormat? = null
 
@@ -71,12 +73,12 @@ class DialogDateFragment : DialogFragment() {
                     Day
                 )
                 dpd.setOnDismissListener {
-//                    model.onSaveDate(test)
+          //          model.onSaveDate(test)
                 }
                 dpd.show()
             }
 //
-//            model.onSaveDate(test)
+         //   model.onSaveDate(test)
 
             clickDataPicker(it)
             dismiss()
@@ -84,27 +86,27 @@ class DialogDateFragment : DialogFragment() {
 
         //Все время
         all_date.setOnClickListener {
-//            model.onSaveDate("Весь период")
+            //model.onSaveDate("Весь период")
             dismiss()
         }
 
         // сегодня
         today.setOnClickListener {
             df = SimpleDateFormat("EEE, d MMM y")
-//            model.onSaveDate(df!!.format(c.time))
+            model.onSaveDate(df!!.format(c.time))
             dismiss()
         }
 
         //Неделя
         week.setOnClickListener {
-//            model.onSaveDate(getMondaySunday()!!)
+          //  model.onSaveDate(getMondaySunday()!!)
             dismiss()
         }
 
         // Месяц
         month.setOnClickListener {
             df = SimpleDateFormat("LLLL")
-//            model.onSaveDate(df!!.format(c.time).toString())
+         //   model.onSaveDate(df!!.format(c.time).toString())
             dismiss()
         }
 
@@ -112,7 +114,7 @@ class DialogDateFragment : DialogFragment() {
         // Выбор года
         year.setOnClickListener {
             df = SimpleDateFormat("y")
-//            model.onSaveDate("${df!!.format(c.time)} год")
+          //  model.onSaveDate("${df!!.format(c.time)} год")
             dismiss()
         }
     }

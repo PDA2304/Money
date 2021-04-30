@@ -57,9 +57,6 @@ data class Invoice(
                     it.setBackgroundResource(R.color.cash);
                     it.radius = 10.toDp(view.context).toFloat()
                 }
-
-
-
             } else {
                 card.also {
                     it.setBackgroundResource(R.color.card);

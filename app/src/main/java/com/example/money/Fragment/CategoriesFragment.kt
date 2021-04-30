@@ -5,7 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.money.R
+import com.example.money.viewmodel.OnSaveDateViewModel
+import kotlinx.android.synthetic.main.fragment_categories.*
 
 class CategoriesFragment : Fragment() {
 
@@ -18,7 +24,20 @@ class CategoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_categories, container, false)
+
+        var view = inflater.inflate(R.layout.fragment_categories, container, false)
+
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val model: OnSaveDateViewModel by activityViewModels()
+        model.savedate.observe(viewLifecycleOwner, Observer<String> { item ->
+            view.findViewById<TextView>(R.id.text_categories_date).text = item
+        })
+
     }
 
 }
