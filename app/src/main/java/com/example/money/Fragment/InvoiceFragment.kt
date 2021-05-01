@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.money.Dialog.DialogAddInvoiceFragment
 import com.example.money.InvoiceResultCallBacks
 import com.example.money.R
 import com.example.money.adapter.InvoiceAdapter
@@ -31,6 +33,13 @@ class InvoiceFragment : Fragment(),InvoiceResultCallBacks {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        btn_add_invoice.setOnClickListener {
+
+            var dialog = DialogAddInvoiceFragment()
+            dialog.show(parentFragmentManager,"Test")
+
+        }
 
         var viewmodel =
             ViewModelProvider(this, InvoiceViewModelFactory(this, view.context)).get(
