@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="textSizeInformation">12sp</dimen>
-    <dimen name="textSize">18sp</dimen>
+    <dimen name="btn_textSize">18sp</dimen>
+    <dimen name="btn_dialog_textSize">14sp</dimen>
 </resources>

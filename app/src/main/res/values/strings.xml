@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">Money</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string-array name="Test">
+    <string-array name="spinner_invoice_item">
         <item>Наличные</item>
         <item>Карта</item>
     </string-array>

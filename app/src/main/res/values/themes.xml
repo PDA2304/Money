@@ -4,13 +4,14 @@
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/blue</item>
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
         <item name="colorControlActivated">@color/blue</item>
         <item name="colorControlNormal">@color/blue</item>
+
     </style>
 
     <style name="BottomNavigationView"  parent="Widget.Design.BottomNavigationView">
@@ -35,7 +36,7 @@
     </style>
 
     <style name="Text">
-        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:textSize">@dimen/btn_textSize</item>
         <item name="android:textColor">@color/black</item>
     </style>
     <style name="TextInformation">
@@ -46,15 +47,15 @@
 
     <style name="Button">
         <item name="android:layout_margin">15dp</item>
-        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:textSize">@dimen/btn_textSize</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/button</item>
     </style>
 
     <style name="ButtonDialog">
-        <item name="android:textSize">@dimen/textSize</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:textSize">@dimen/btn_dialog_textSize</item>
+        <item name="android:layout_height">30dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/button</item>
     </style>
@@ -73,7 +74,7 @@
 
     <style name="TextDialogBar">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:textSize">@dimen/btn_textSize</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -83,7 +84,7 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="EditTextHeader" parent="TextAppearance.AppCompat.Body1">
+    <style name="EditTextHeader" parent="TextAppearance.AppCompat.Small">
         <item name="android:textColor">@color/blue</item>
     </style>
 </resources>
