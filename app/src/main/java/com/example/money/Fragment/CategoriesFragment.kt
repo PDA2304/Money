@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.money.R
 import com.example.money.viewmodel.OnSaveDateViewModel
 import kotlinx.android.synthetic.main.fragment_categories.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CategoriesFragment : Fragment() {
 
@@ -33,6 +35,11 @@ class CategoriesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val c = Calendar.getInstance()
+        var df = SimpleDateFormat("EEE, d MMM y")
+        text_categories_date.text = df.format(c.time)
+
         val model: OnSaveDateViewModel by activityViewModels()
         model.savedate.observe(viewLifecycleOwner, Observer<String> { item ->
             view.findViewById<TextView>(R.id.text_categories_date).text = item

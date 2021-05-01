@@ -49,7 +49,6 @@ class DialogDateFragment : DialogFragment() {
 
     }
 
-
     @SuppressLint("SimpleDateFormat")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,12 +72,12 @@ class DialogDateFragment : DialogFragment() {
                     Day
                 )
                 dpd.setOnDismissListener {
-          //          model.onSaveDate(test)
+                    model.onSaveDate(test)
                 }
                 dpd.show()
             }
 //
-         //   model.onSaveDate(test)
+            model.onSaveDate(test)
 
             clickDataPicker(it)
             dismiss()
@@ -86,7 +85,7 @@ class DialogDateFragment : DialogFragment() {
 
         //Все время
         all_date.setOnClickListener {
-            //model.onSaveDate("Весь период")
+            model.onSaveDate("Весь период")
             dismiss()
         }
 
@@ -99,14 +98,14 @@ class DialogDateFragment : DialogFragment() {
 
         //Неделя
         week.setOnClickListener {
-          //  model.onSaveDate(getMondaySunday()!!)
+            model.onSaveDate(getMondaySunday()!!)
             dismiss()
         }
 
         // Месяц
         month.setOnClickListener {
             df = SimpleDateFormat("LLLL")
-         //   model.onSaveDate(df!!.format(c.time).toString())
+            model.onSaveDate(df!!.format(c.time).toString())
             dismiss()
         }
 
@@ -114,7 +113,7 @@ class DialogDateFragment : DialogFragment() {
         // Выбор года
         year.setOnClickListener {
             df = SimpleDateFormat("y")
-          //  model.onSaveDate("${df!!.format(c.time)} год")
+            model.onSaveDate("${df!!.format(c.time)} год")
             dismiss()
         }
     }
