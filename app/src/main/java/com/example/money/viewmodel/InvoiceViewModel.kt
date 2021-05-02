@@ -3,7 +3,6 @@ package com.example.money.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.example.money.InvoiceResultCallBacks
-import com.example.money.R
 import com.example.money.database.DataBaseHelper
 import com.example.money.model.Invoice
 
@@ -13,9 +12,11 @@ class InvoiceViewModel(private var context: Context, private val listener: Invoi
 
     fun Cost(): Int = data.InvoiceCostSum()
 
+    fun Count() : Int = data.InvoiceCount()
+
     fun InvoiceShow(): ArrayList<Invoice> {
 
-        var array = data.Invoice()
+        var array = data.SelectInvoice()
         if (array.size != 0) {
             return array
         } else {
@@ -26,6 +27,7 @@ class InvoiceViewModel(private var context: Context, private val listener: Invoi
 
         return array
     }
+
 
 
 }

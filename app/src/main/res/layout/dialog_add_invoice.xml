@@ -35,6 +35,7 @@
                 android:padding="10dp">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/name_invoice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:counterEnabled="true"
@@ -43,7 +44,6 @@
                     app:hintTextAppearance="@style/EditTextHeader">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/name_invoice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLength="20"
@@ -61,6 +61,7 @@
                     android:spinnerMode="dropdown" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/cost_invoice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -69,31 +70,15 @@
                     app:hintTextAppearance="@style/EditTextHeader">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/cost_invoice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/blue"
                         android:hint="Начальное состояние счета"
                         android:inputType="number"
+                        android:text="0"
                         android:maxLength="8" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="100"
-                    app:hintTextAppearance="@style/EditTextHeader">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/blue"
-                        android:singleLine="true"
-                        android:hint="Описание"
-                        android:maxLength="100" />
-                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

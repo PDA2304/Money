@@ -27,7 +27,7 @@ data class Invoice(
         }
 
     var imageId: Int
-        get() = this.image
+        get() = image
         set(value) {
             when (value) {
                 1 -> {

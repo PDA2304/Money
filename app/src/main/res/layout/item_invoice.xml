@@ -26,12 +26,12 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="10dp">
                 <androidx.cardview.widget.CardView
-                    background="@{model.imageId}"
+                    background="@{model.image}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:backgroundTint="@color/cash">
                     <ImageView
-                        imageUrl="@{model.imageId}"
+                        imageUrl="@{model.image}"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="5dp"

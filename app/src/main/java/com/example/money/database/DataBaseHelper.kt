@@ -1,12 +1,14 @@
 package com.example.money.database
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 import com.example.money.model.Invoice
+
 
 class DataBaseHelper(var context: Context) :
     SQLiteOpenHelper(context, NAME_FILE, null, DATABASE_VERSION) {
@@ -37,11 +39,11 @@ class DataBaseHelper(var context: Context) :
     }
 
     @SuppressLint("Recycle")
-    fun Invoice(): ArrayList<Invoice> {
-
+    fun SelectInvoice(): ArrayList<Invoice> {
         db = openHelper.writableDatabase
         var arrayList = ArrayList<Invoice>()
-        var cursor: Cursor = db!!.query("Invoice", null, null, null, null, null, null)
+        var cursor: Cursor =
+            db!!.query("Invoice", null, null, null, null, null, "Type_ID_Invoice ASC")
         if (cursor.moveToFirst()) {
             do {
 
@@ -79,6 +81,51 @@ class DataBaseHelper(var context: Context) :
             Toast.makeText(context, "Нет не одного счета", Toast.LENGTH_SHORT).show()
         }
 
+        db!!.close()
+    }
+
+    fun SelectIDInvoice(): Int {
+        db = openHelper.writableDatabase
+        var cursor: Cursor = db!!.rawQuery(
+            "SELECT ID_Invoice FROM Invoice ORDER BY Invoice.ID_Invoice DESC LIMIT 1",
+            null
+        )
+        if (cursor.moveToFirst()) {
+            do {
+                return cursor.getInt(0)
+            } while (cursor.moveToNext())
+        } else {
+            return 1
+        }
+
+        db!!.close()
+    }
+
+    fun InvoiceCount(): Int{
+        db = openHelper.writableDatabase
+        var cursor: Cursor = db!!.rawQuery(
+            "select count(*) from Invoice",
+            null
+        )
+        if (cursor.moveToFirst()) {
+            do {
+                return cursor.getInt(0)
+            } while (cursor.moveToNext())
+        } else {
+            return 0
+        }
+
+        db!!.close()
+    }
+
+    fun AddInvoice( Name_Invoice: String, Type_ID_Invoice: Int, Cost: Int)
+    {
+        db = openHelper.writableDatabase
+        val newValues = ContentValues()
+        newValues.put("Name",Name_Invoice)
+        newValues.put("Type_ID_Invoice",Type_ID_Invoice)
+        newValues.put("Cost",Cost)
+        db!!.insert("Invoice",null,newValues)
         db!!.close()
     }
 

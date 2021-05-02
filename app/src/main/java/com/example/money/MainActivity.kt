@@ -6,14 +6,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.money.Dialog.DialogDateFragment
-import com.example.money.viewmodel.OnSaveDateViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_categories.*
-import java.text.SimpleDateFormat
+import kotlinx.android.synthetic.main.fragment_invoice.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
