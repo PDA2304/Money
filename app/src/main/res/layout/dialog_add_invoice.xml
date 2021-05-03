@@ -11,9 +11,6 @@
         style="@style/TextDialogBar"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:gravity="center"
-        android:padding="5dp"
         android:text="Добавление счета" />
 
     <LinearLayout
@@ -38,24 +35,24 @@
                     android:id="@+id/name_invoice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="20"
                     android:singleLine="true"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="25"
                     app:hintTextAppearance="@style/EditTextHeader">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="20"
                         android:backgroundTint="@color/blue"
-                        android:hint="Название счета" />
+                        android:hint="Название счета"
+                        android:maxLength="25" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
                     android:id="@+id/type_invoice"
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/spinner_background"
                     android:entries="@array/spinner_invoice_item"
                     android:spinnerMode="dropdown" />
@@ -75,8 +72,8 @@
                         android:backgroundTint="@color/blue"
                         android:hint="Начальное состояние счета"
                         android:inputType="number"
-                        android:text="0"
-                        android:maxLength="8" />
+                        android:maxLength="8"
+                        android:text="0" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -86,24 +83,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp">
+            android:gravity="right">
 
             <Button
                 android:id="@+id/btn_cancel"
                 style="@style/ButtonDialog"
-                android:layout_width="match_parent"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:text="Отмена" />
 
             <Button
-                android:id="@+id/btn_add_invoice"
+                android:id="@+id/btn_insert_invoice"
                 style="@style/ButtonDialog"
-                android:layout_width="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:text="Добавить" />
+                android:text="Сохранить" />
         </LinearLayout>
 
     </LinearLayout>

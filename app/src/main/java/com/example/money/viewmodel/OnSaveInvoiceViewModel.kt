@@ -10,4 +10,10 @@ class OnSaveInvoiceViewModel : ViewModel() {
     fun onSaveInvoice(item: ArrayList<Invoice>) {
         saveinvoice.value = item
     }
+
+    val сostinvoice = MutableLiveData<Int>()
+
+    fun onCostInvoice(item: Int) {
+        сostinvoice.value = item
+    }
 }

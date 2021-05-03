@@ -42,27 +42,18 @@
 
         <androidx.cardview.widget.CardView
             style="@style/CardViewProfile"
+            android:id="@+id/card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_invoice"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-            <TextView
-                style="@style/Text"
-                android:visibility="gone"
-                android:id="@+id/text_null_invoice"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Нет не одного счета" />
         </androidx.cardview.widget.CardView>
 
         <TextView
-
-            android:id="@+id/text_max_invoice"
+            android:id="@+id/text_information_invoice"
             style="@style/TextInformation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

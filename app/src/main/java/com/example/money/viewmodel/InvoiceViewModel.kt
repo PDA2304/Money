@@ -1,18 +1,31 @@
 package com.example.money.viewmodel
 
-import android.content.Context
+import android.view.View
+import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import com.example.money.InvoiceResultCallBacks
+import com.example.money.R
 import com.example.money.database.DataBaseHelper
 import com.example.money.model.Invoice
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class InvoiceViewModel(private var context: Context, private val listener: InvoiceResultCallBacks) :
-    ViewModel() {
-    val data = DataBaseHelper(context)
+class InvoiceViewModel(private val context: View, private val listener: InvoiceResultCallBacks) : ViewModel() {
+
+    var text = context.findViewById<TextView>(R.id.text_information_invoice)
+    var btn_add = context.findViewById<FloatingActionButton>(R.id.btn_add_invoice)
+    val data = DataBaseHelper(context.context)
 
     fun Cost(): Int = data.InvoiceCostSum()
 
-    fun Count() : Int = data.InvoiceCount()
+    fun Count(): Int = data.InvoiceCount()
+
+    fun Delete(position: Int) {
+        data.DeleteInvoice(position)
+    }
+
+    fun Update(position: Int, Name_Invoice: String, Type_ID_Invoice: Int) {
+        data.UpdateInvoice(position, Name_Invoice, Type_ID_Invoice)
+    }
 
     fun InvoiceShow(): ArrayList<Invoice> {
 
@@ -20,14 +33,11 @@ class InvoiceViewModel(private var context: Context, private val listener: Invoi
         if (array.size != 0) {
             return array
         } else {
-            listener.onError("Нет не одного счета")
+            text.visibility = View.VISIBLE
+            text.text = "Нет ни одного счета"
         }
-
-
 
         return array
     }
-
-
 
 }
