@@ -9,7 +9,8 @@
         android:id="@+id/categoriesFragment"
         android:name="com.example.money.Fragment.CategoriesFragment"
         android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_categories" >
+    </fragment>
     <fragment
         android:id="@+id/invoiceFragment"
         android:name="com.example.money.Fragment.InvoiceFragment"
@@ -57,4 +58,9 @@
             android:id="@+id/action_statisticExpenceFragment_to_operationsFragment"
             app:destination="@id/operationsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.money.Fragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" />
 </navigation>
