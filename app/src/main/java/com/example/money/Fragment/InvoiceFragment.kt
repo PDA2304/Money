@@ -113,7 +113,7 @@ class InvoiceFragment : Fragment(), InvoiceResultCallBacks, InvoiceAdapter.Click
                 btn_edit_invoice.setOnClickListener {
                     if (!editText.isErrorEnabled) {
                         adapter.updateData(position, editText.editText!!.text.toString(), type_id)
-                        viewmodel.Update(position, editText.editText!!.text.toString(), type_id)
+                        viewmodel.Update(position + 1, editText.editText!!.text.toString(), type_id)
                         create.cancel()
                     }
                 }
