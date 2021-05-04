@@ -137,6 +137,31 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
     }
 
 
+    fun InsertIncome( Date: String, Category_Income_ID: Int , Cost: Int , Description: String , Invoice_ID: Int)
+    {
+        db = openHelper.writableDatabase
+        val newValues = ContentValues()
+        newValues.put("Date", Date)
+        newValues.put("Category_Income_ID", Category_Income_ID)
+        newValues.put("Cost", Cost)
+        newValues.put("Description", Description)
+        newValues.put("Invoice_ID", Invoice_ID)
+        db!!.insert("Income", null, newValues)
+        db!!.close()
+    }
+
+    fun InsertExpence(Date: String, Category_expence_ID: Int , Cost: Int , Description: String , Invoice_ID: Int)
+    {
+        db = openHelper.writableDatabase
+        val newValues = ContentValues()
+        newValues.put("Date", Date)
+        newValues.put("Category_expence_ID", Category_expence_ID)
+        newValues.put("Cost", Cost)
+        newValues.put("Description",Description)
+        newValues.put("Invoice_ID", Invoice_ID)
+        db!!.insert("Expence", null, newValues)
+        db!!.close()
+    }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         context.deleteDatabase("money.db")

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left">
+
+        <ImageView
+            android:id="@+id/ivCountry"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:src="@drawable/other" />
+
+        <TextView
+            android:id="@+id/tvCountry"
+            style="@style/TextSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            tools:text="Зарпалата" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -39,10 +39,20 @@
         <item name="android:textSize">@dimen/btn_textSize</item>
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="TextSpinner">
+        <item name="android:textSize">@dimen/btn_textSize</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
     <style name="TextInformation">
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/textSizeInformation</item>
         <item name="android:textColor">@color/information</item>
+    </style>
+
+    <style name="TextHintDialogOperations">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/textSizeInformationDialogOperations</item>
+        <item name="android:textColor">@color/blue</item>
     </style>
 
     <style name="Button">
