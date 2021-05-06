@@ -60,7 +60,7 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
 
 //        val adapter = OperationDateAdapter(viewModel.test, view.context)
         val adapter = OperationDateAdapter(view.context)
-        adapter.operations = viewModel.onOperationDateAll(1, c.time, c.time, arrayTextView)
+        adapter.operations = viewModel.onOperationDateAll(1, c.time, c.time, 0, arrayTextView)
 
         recyclerview_operations_date.also {
             it.layoutManager = LinearLayoutManager(view.context)
@@ -80,7 +80,7 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
         })
 
         model.Date.observe(viewLifecycleOwner, { item ->
-            adapter.refresh(viewModel.onOperationDateAll(item.type, item.date_from, item.date_to, arrayTextView))
+            adapter.refresh(viewModel.onOperationDateAll(item.type, item.date_from, item.date_to, item.Invoice_ID, arrayTextView))
         })
 
         btn_add_operations.setOnClickListener {
@@ -230,6 +230,5 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
 
     override fun onSucces(message: String) {
     }
-
 
 }

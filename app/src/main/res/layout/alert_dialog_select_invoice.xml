@@ -28,6 +28,7 @@
             <TextView
                 android:id="@+id/text_null_invoice"
                 style="@style/Text"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

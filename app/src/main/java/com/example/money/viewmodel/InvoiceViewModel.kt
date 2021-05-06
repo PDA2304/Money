@@ -1,7 +1,9 @@
 package com.example.money.viewmodel
 
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModel
 import com.example.money.InvoiceResultCallBacks
 import com.example.money.R
@@ -10,7 +12,6 @@ import com.example.money.model.Invoice
 
 class InvoiceViewModel(private val context: View, private val listener: InvoiceResultCallBacks) : ViewModel() {
 
-    var text: TextView = context.findViewById(R.id.text_information_invoice)
     val data = DataBaseHelper(context.context)
 
     fun Cost(): Int = data.InvoiceCostSum()
@@ -26,6 +27,7 @@ class InvoiceViewModel(private val context: View, private val listener: InvoiceR
     }
 
     fun InvoiceShow(): ArrayList<Invoice> {
+        val text: TextView = context.findViewById(R.id.text_information_invoice)
 
         val array = data.selectInvoice()
         if (array.size != 0) {
@@ -36,6 +38,25 @@ class InvoiceViewModel(private val context: View, private val listener: InvoiceR
         }
 
         return array
+    }
+
+    fun invoiceShowSelect(): ArrayList<Invoice> {
+        val text_null_invoice: TextView = context.findViewById(R.id.text_null_invoice)
+        val card_recycler_view_invoice: CardView = context.findViewById(R.id.card_recycler_view_invoice)
+        val invoice_all: LinearLayout = context.findViewById(R.id.invoice_all)
+        val array = data.selectInvoice()
+        if (array.size != 0) {
+            card_recycler_view_invoice.visibility = View.VISIBLE
+            invoice_all.visibility = View.VISIBLE
+            text_null_invoice.visibility = View.GONE
+            return array
+        } else {
+            text_null_invoice.visibility = View.VISIBLE
+            text_null_invoice.text = "Нет ни одного счета"
+            card_recycler_view_invoice.visibility = View.GONE
+            invoice_all.visibility = View.GONE
+            return ArrayList<Invoice>()
+        }
     }
 
 }

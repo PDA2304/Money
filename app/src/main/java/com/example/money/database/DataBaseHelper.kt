@@ -212,7 +212,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         return date
     }
 
-    fun OperationDateAll(type: Int, date_from: Date, date_to: Date?): ArrayList<OperationDate> {
+    fun OperationDateAll(type: Int, date_from: Date, date_to: Date?, Invoice_ID: Int): ArrayList<OperationDate> {
         val arrayExpence = ArrayList<OperationDate>()
         val date = allDate(type, date_from, date_to)
         SaveCost.Expence = 0
@@ -221,7 +221,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         if (date.isEmpty()) return ArrayList<OperationDate>()
 
         for (i in 0..date.size - 1) {
-            val cursor = Test(date[i])
+            val cursor = Test(date[i], Invoice_ID)
             val arrayList = ArrayList<Operations>()
             var cost = 0
 
@@ -261,12 +261,16 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         return arrayExpence
     }
 
-    fun Test(date: String): Cursor {
+    fun Test(date: String, Invoice_ID: Int): Cursor {
         db = openHelper.writableDatabase
-        var cursor = db!!.query(
+        if (Invoice_ID == 0) return db!!.query(
             "View_Expence_Income", null, "Date = ?", arrayOf(date), null, null, null
-        )
-        return cursor
+        )else
+        {
+            return db!!.query(
+                "View_Expence_Income", null, "Date = ? Invoice_ID = ?", arrayOf(date, Invoice_ID.toString()), null, null, null
+            )
+        }
     }
 
 }

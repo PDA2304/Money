@@ -71,7 +71,7 @@ class DialogDateFragment : DialogFragment() {
         //Все время
         all_date.setOnClickListener {
             model.onSaveDate("Весь период")
-            model.onDate(c.time, null, 2)
+            model.onDate(c.time, null, 0,2,)
             dismiss()
         }
 
@@ -99,7 +99,7 @@ class DialogDateFragment : DialogFragment() {
 
     fun getDate(date_from: Date, date_to: Date?, type: Int, format: SimpleDateFormat) {
         model.onSaveDate(format.format(date_from))
-        model.onDate(date_from, date_to, type)
+        model.onDate(date_from, date_to, 0,type)
         dismiss()
     }
 
@@ -113,7 +113,7 @@ class DialogDateFragment : DialogFragment() {
 
         c[Calendar.DAY_OF_WEEK] = Calendar.SUNDAY
         val sunday = c.time
-        model.onDate(monday, sunday, 4)
+        model.onDate(monday, sunday, 0,4)
         return "${format.format(monday)} - ${format.format(sunday)}"
     }
 
