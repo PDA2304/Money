@@ -11,10 +11,9 @@
 
         <item name="colorControlActivated">@color/blue</item>
         <item name="colorControlNormal">@color/blue</item>
-
     </style>
 
-    <style name="BottomNavigationView"  parent="Widget.Design.BottomNavigationView">
+    <style name="BottomNavigationView" parent="Widget.Design.BottomNavigationView">
         <item name="android:itemBackground">@color/blue</item>
         <item name="itemIconTint">@color/white</item>
         <item name="android:background">@color/blue</item>
@@ -24,8 +23,23 @@
     </style>
 
     <style name="Toolbar">
-        <item name="android:background">@color/blue</item>
         <item name="titleTextColor">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+
+        <item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>
+        <item name="android:textColorPrimaryInverse">@color/abc_primary_text_material_light</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/abc_primary_text_disable_only_material_dark</item>
+        <item name="android:textColorSecondary">@color/abc_secondary_text_material_dark</item>
+        <item name="android:textColorSecondaryInverse">@color/abc_secondary_text_material_light</item>
+        <item name="android:textColorTertiary">@color/abc_secondary_text_material_dark</item>
+        <item name="android:textColorTertiaryInverse">@color/abc_secondary_text_material_light</item>
+        <item name="android:textColorHint">@color/abc_hint_foreground_material_dark</item>
+        <item name="android:textColorHintInverse">@color/abc_hint_foreground_material_light</item>
+        <item name="android:textColorHighlight">@color/highlighted_text_material_dark</item>
+
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
+
     </style>
 
     <style name="TextStyleBNV">
@@ -39,10 +53,17 @@
         <item name="android:textSize">@dimen/btn_textSize</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="TextRecyclerViewItem">
+        <item name="android:textSize">@dimen/TextRecyclerViewItem</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextSpinner">
         <item name="android:textSize">@dimen/btn_textSize</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="TextInformation">
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/textSizeInformation</item>

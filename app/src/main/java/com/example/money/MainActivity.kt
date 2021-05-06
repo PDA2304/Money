@@ -1,11 +1,14 @@
 package com.example.money
 
+import android.app.SearchManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.money.Dialog.DialogDateFragment
@@ -34,20 +37,24 @@ class MainActivity : AppCompatActivity() {
 
             val invoice_select = toolbar.findViewById<View>(R.id.invoice_select)
             val date_select = toolbar.findViewById<View>(R.id.date_select)
+            val search = toolbar.findViewById<View>(R.id.search)
 
 
             when (item.itemId) {
                 R.id.invoiceFragment -> {
+                    search.visibility = View.GONE
                     invoice_select.visibility = View.GONE
                     date_select.visibility = View.GONE
                     title = "Счета"
                 }
                 R.id.categoriesFragment -> {
+                    search.visibility = View.VISIBLE
                     invoice_select.visibility = View.VISIBLE
                     date_select.visibility = View.VISIBLE
                     title = "Категории"
                 }
                 R.id.profileFragment -> {
+                    search.visibility = View.GONE
                     invoice_select.visibility = View.GONE
                     date_select.visibility = View.GONE
                     title = "Профиль"
@@ -55,12 +62,15 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnNavigationItemSelectedListener true
         }
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        getMenuInflater().inflate(R.menu.menu_item_bar, menu);
+        var test = menuInflater.inflate(R.menu.menu_item_bar, menu);
+        var manager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        var searchItem = menu?.findItem(R.id.search)
+        var searchView = searchItem?.actionView as SearchView
+//
+        searchView.setSearchableInfo(manager.getSearchableInfo(componentName))
         return true
     }
 
@@ -68,7 +78,6 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.date_select -> {
                 var selecc_date = DialogDateFragment()
-
                 selecc_date.show(supportFragmentManager, "Date")
             }
             R.id.invoice_select -> {

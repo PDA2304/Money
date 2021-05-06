@@ -9,10 +9,7 @@
         android:id="@+id/categoriesFragment"
         android:icon="@drawable/categori"
         android:title="Категории" />
-    <item
-        android:id="@+id/operationsFragment"
-        android:icon="@drawable/operations"
-        android:title="Операции" />
+
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/user"

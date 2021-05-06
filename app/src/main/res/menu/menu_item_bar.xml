@@ -3,15 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/invoice_select"
-        android:title="Счета"
-        android:icon="@drawable/invoice"
-        app:showAsAction="always" />
-
-    <item
         android:id="@+id/date_select"
-        android:title="Дата"
         android:icon="@drawable/ic_calendar_toolbar"
+        android:title="Дата"
         app:showAsAction="always" />
-
+    <item
+        android:id="@+id/invoice_select"
+        android:icon="@drawable/invoice"
+        android:title="Счета"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search"
+        android:title="поиск"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 </menu>

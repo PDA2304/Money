@@ -22,43 +22,6 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/operationsFragment"
-        android:name="com.example.money.Fragment.OperationsFragment"
-        android:label="fragment_operations"
-        tools:layout="@layout/fragment_operations">
-        <action
-            android:id="@+id/action_operationsFragment_to_statisticExpenceFragment"
-            app:destination="@id/statisticExpenceFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/statisticIncomeFragment"
-        android:name="com.example.money.Fragment.StatisticIncomeFragment"
-        android:label="fragment_statistic_income"
-        tools:layout="@layout/fragment_statistic_income">
-        <action
-            android:id="@+id/action_statisticIncomeFragment_to_statisticInvoiceFragment"
-            app:destination="@id/statisticExpenceFragment" />
-        <action
-            android:id="@+id/action_statisticIncomeFragment_to_operationsFragment"
-            app:destination="@id/operationsFragment" />
-        <action
-            android:id="@+id/action_statisticIncomeFragment_to_statisticExpenceFragment"
-            app:destination="@id/statisticExpenceFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/statisticExpenceFragment"
-        android:name="com.example.money.Fragment.StatisticExpenceFragment"
-        android:label="fragment_statistic_invoice"
-        tools:layout="@layout/fragment_statistic_expence">
-
-        <action
-            android:id="@+id/action_statisticExpenceFragment_to_statisticIncomeFragment"
-            app:destination="@id/statisticIncomeFragment" />
-        <action
-            android:id="@+id/action_statisticExpenceFragment_to_operationsFragment"
-            app:destination="@id/operationsFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.money.Fragment.SplashFragment"
         android:label="fragment_splash"
