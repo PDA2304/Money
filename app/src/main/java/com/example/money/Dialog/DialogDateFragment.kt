@@ -22,19 +22,15 @@ class DialogDateFragment : DialogFragment() {
 
     private val model  :  OnSaveDateViewModel by activityViewModels()
 
-    var df: DateFormat? = null
+    private var df: DateFormat? = null
 
     //Переменная которая хранит в себе состояние даты
-    val c = Calendar.getInstance()
+    private val c = Calendar.getInstance()
 
-    val Year = c.get(Calendar.YEAR) // Текущий год
-    val Month = c.get(Calendar.MONTH) // Текущий месяц
-    val Day = c.get(Calendar.DAY_OF_MONTH) // Текущий день
+    private val Year = c.get(Calendar.YEAR) // Текущий год
+    private val Month = c.get(Calendar.MONTH) // Текущий месяц
+    private val Day = c.get(Calendar.DAY_OF_MONTH) // Текущий день
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,11 +38,8 @@ class DialogDateFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        var view = inflater.inflate(R.layout.dialog_select_date, container, false)
-
+        val view = inflater.inflate(R.layout.dialog_select_date, container, false)
         return view
-
-
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -55,25 +48,21 @@ class DialogDateFragment : DialogFragment() {
 
         // Выбор даты
         select_date.setOnClickListener {
-            var test: String = ""
+            var test = ""
 
             @RequiresApi(Build.VERSION_CODES.N)
             fun clickDataPicker(view: View) {
 
-                val dpd = DatePickerDialog(
-                    view.context,
-                    DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                        df = SimpleDateFormat("EEE, d MMM y")
-                        c.set(year, monthOfYear, dayOfMonth)
-                        test = df!!.format(c.time)
-                    },
-                    Year,
-                    Month,
-                    Day
-                )
+                val dpd = DatePickerDialog(view.context, { _, year, monthOfYear, dayOfMonth ->
+                    df = SimpleDateFormat("EEE, dd MMM y")
+                    c.set(year, monthOfYear, dayOfMonth)
+                    test = df!!.format(c.time)
+                }, Year, Month, Day)
                 dpd.setOnDismissListener {
                     model.onSaveDate(test)
+                    model.onDate(c.time,1)
                 }
+
                 dpd.show()
             }
 //
@@ -86,19 +75,21 @@ class DialogDateFragment : DialogFragment() {
         //Все время
         all_date.setOnClickListener {
             model.onSaveDate("Весь период")
+            model.onDate(c.time,2)
             dismiss()
         }
 
         // сегодня
         today.setOnClickListener {
-            df = SimpleDateFormat("EEE, d MMM y")
+            df = SimpleDateFormat("EEE, dd MMM y")
             model.onSaveDate(df!!.format(c.time))
+            model.onDate(c.time,3)
             dismiss()
         }
 
         //Неделя
         week.setOnClickListener {
-            model.onSaveDate(getMondaySunday()!!)
+            model.onSaveDate(getMondaySunday())
             dismiss()
         }
 
@@ -106,29 +97,31 @@ class DialogDateFragment : DialogFragment() {
         month.setOnClickListener {
             df = SimpleDateFormat("LLLL")
             model.onSaveDate(df!!.format(c.time).toString())
+            model.onDate(c.time,5)
             dismiss()
         }
 
 
         // Выбор года
         year.setOnClickListener {
-            df = SimpleDateFormat("y")
-            model.onSaveDate("${df!!.format(c.time)} год")
+            df = SimpleDateFormat("y г.")
+            model.onSaveDate(df!!.format(c.time))
+            model.onDate(c.time,6)
             dismiss()
         }
     }
 
     // Функция которая возвращает Понедельник и Воскресенье текущиего дня
-    fun getMondaySunday(): String? {
+    @SuppressLint("SimpleDateFormat")
+    fun getMondaySunday(): String {
         df = SimpleDateFormat("dd MMM")
         val date = Date()
         c.time = date
         c[Calendar.DAY_OF_WEEK] = Calendar.MONDAY
-        var monday = c.time
+        val monday = c.time
 
         c[Calendar.DAY_OF_WEEK] = Calendar.SUNDAY
-        var sunday = c.time
-
+        val sunday = c.time
         return "${df!!.format(monday)} - ${df!!.format(sunday)}"
     }
 

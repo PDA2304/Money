@@ -6,31 +6,34 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.widget.Toast
-import com.example.money.model.Invoice
+import android.util.Log
+import com.example.money.model.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE, null, DATABASE_VERSION) {
 
     private val openHelper: SQLiteOpenHelper
     private var db: SQLiteDatabase? = null
-    var instances: DBConnectFile? = null
-
-    companion object {
-        private val NAME_FILE = "money.db"
-        private val DATABASE_VERSION = 1
-    }
-
+    private var instances: DBConnectFile? = null
 
     init {
         openHelper = DBConnectFile(context)
     }
 
+    companion object {
+        private const val NAME_FILE = "money.db"
+        private const val DATABASE_VERSION = 1
+    }
+
+
     override fun onCreate(p0: SQLiteDatabase?) {
         DataBaseHelper(this.context).getInstance(this.context)
     }
 
-    fun getInstance(context: Context?): DBConnectFile? {
+    private fun getInstance(context: Context?): DBConnectFile? {
         if (instances == null) {
             instances = DBConnectFile(context!!)
         }
@@ -38,14 +41,14 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
     }
 
     @SuppressLint("Recycle")
-    fun SelectInvoice(): ArrayList<Invoice> {
+    fun selectInvoice(): ArrayList<Invoice> {
         db = openHelper.writableDatabase
         var arrayList = ArrayList<Invoice>()
         val cursor: Cursor = db!!.query("Invoice", null, null, null, null, null, "Type_ID_Invoice ASC")
         if (cursor.moveToFirst()) {
             do {
 
-                var invoice: Invoice = Invoice(0, "", 0, 0, 0)
+                val invoice = Invoice(0, "", 0, 0, 0)
                 invoice.imageId = cursor.getInt(2)
                 arrayList.add(
                     Invoice(
@@ -54,13 +57,14 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
                 )
             } while (cursor.moveToNext())
         } else {
-            arrayList = ArrayList<Invoice>()
+            arrayList = ArrayList()
         }
 
         db!!.close()
 
         return arrayList
     }
+
 
     @SuppressLint("Recycle")
     fun InvoiceCostSum(): Int {
@@ -77,9 +81,10 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         db!!.close()
     }
 
+    @SuppressLint("Recycle")
     fun SelectIDInvoice(): Int {
         db = openHelper.writableDatabase
-        var cursor: Cursor = db!!.rawQuery(
+        val cursor: Cursor = db!!.rawQuery(
             "SELECT ID_Invoice FROM Invoice ORDER BY Invoice.ID_Invoice DESC LIMIT 1", null
         )
         if (cursor.moveToFirst()) {
@@ -93,9 +98,10 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         db!!.close()
     }
 
+    @SuppressLint("Recycle")
     fun InvoiceCount(): Int {
         db = openHelper.writableDatabase
-        var cursor: Cursor = db!!.rawQuery(
+        val cursor: Cursor = db!!.rawQuery(
             "select count(*) from Invoice", null
         )
         if (cursor.moveToFirst()) {
@@ -122,23 +128,22 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
 
     fun DeleteInvoice(ID: Int) {
         db = openHelper.writableDatabase
+        db!!.execSQL("PRAGMA foreign_keys=ON");
         db!!.delete("Invoice", "ID_Invoice =$ID", null)
         db!!.close()
     }
 
-    fun UpdateInvoice(ID: Int, Name_Invoice: String, Type_ID_Invoice: Int )
-    {
+    fun UpdateInvoice(ID: Int, Name_Invoice: String, Type_ID_Invoice: Int) {
         db = openHelper.writableDatabase
         val newValues = ContentValues()
         newValues.put("Name", Name_Invoice)
         newValues.put("Type_ID_Invoice", Type_ID_Invoice)
-        db!!.update("Invoice", newValues, "ID_Invoice = $ID",null)
+        db!!.update("Invoice", newValues, "ID_Invoice = $ID", null)
         db!!.close()
     }
 
 
-    fun InsertIncome( Date: String, Category_Income_ID: Int , Cost: Int , Description: String , Invoice_ID: Int)
-    {
+    fun InsertIncome(Date: String, Category_Income_ID: Int, Cost: Int, Description: String, Invoice_ID: Int) {
         db = openHelper.writableDatabase
         val newValues = ContentValues()
         newValues.put("Date", Date)
@@ -150,14 +155,13 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         db!!.close()
     }
 
-    fun InsertExpence(Date: String, Category_expence_ID: Int , Cost: Int , Description: String , Invoice_ID: Int)
-    {
+    fun InsertExpence(Date: String, Category_expence_ID: Int, Cost: Int, Description: String, Invoice_ID: Int) {
         db = openHelper.writableDatabase
         val newValues = ContentValues()
         newValues.put("Date", Date)
         newValues.put("Category_expence_ID", Category_expence_ID)
         newValues.put("Cost", Cost)
-        newValues.put("Description",Description)
+        newValues.put("Description", Description)
         newValues.put("Invoice_ID", Invoice_ID)
         db!!.insert("Expence", null, newValues)
         db!!.close()
@@ -167,5 +171,101 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         context.deleteDatabase("money.db")
         onCreate(p0)
     }
+
+    @SuppressLint("Recycle", "SimpleDateFormat")
+    private fun allDate(type: Int, Date: Date): ArrayList<String> {
+        db = openHelper.writableDatabase
+        var date = ArrayList<String>()
+        var c: Cursor? = null
+        if (type == 1 || type == 3) {
+            var format = SimpleDateFormat("dd.MM.y")
+            Log.i("Date", format.format(Date))
+            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date  =  ?", arrayOf(format.format(Date)), null, null, null)// День
+        }
+
+        if (type == 2) c = db!!.rawQuery("SELECT DISTINCT Date from View_Expence_Income", null) // Все даты
+        if (type == 4) c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date  BETWEEN  ? and ?", arrayOf("05.04.2021", "11.04.2021"), null, null, null) /// Неделя
+        if (type == 5) {
+            var format = SimpleDateFormat(".MM.y")
+            Log.i("Date", format.format(Date))
+            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date Like ?", arrayOf("%${format.format(Date)}"), null, null, null) // месяц
+
+        }
+        if (type == 6) {
+            var format = SimpleDateFormat(".y")
+            Log.i("Date", format.format(Date))
+            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date Like ? ", arrayOf("%${format.format(Date)}"), null, null, null) //Год
+        }
+        if (c!!.moveToFirst()) {
+            do {
+                date.add(
+                    c.getString(0)
+                )
+            } while (c.moveToNext());
+        } else {
+            date = ArrayList<String>()
+        }
+
+        db!!.close()
+        return date
+    }
+
+    fun OperationDateAll(type: Int, Date: Date): ArrayList<OperationDate> {
+        val arrayExpence = ArrayList<OperationDate>()
+        val date = allDate(type, Date)
+        SaveCost.Expence = 0
+        SaveCost.Income = 0
+
+        if (date.isEmpty()) return ArrayList<OperationDate>()
+
+        for (i in 0..date.size - 1) {
+            val cursor = Test(date[i])
+            val arrayList = ArrayList<Operations>()
+            var cost = 0
+
+            if (cursor.moveToFirst()) {
+                do {
+                    val model = Operations(0, "", 1, "", "", 0, 0)
+                    model.ID = cursor.getInt(0)
+                    model.Date = cursor.getString(1)
+                    model.Catagory_ID = cursor.getInt(2)
+                    model.Cost = cursor.getString(3)
+                    model.Description = cursor.getString(4)
+                    model.Invoice_ID = cursor.getInt(5)
+                    model.Type_table = cursor.getInt(6)
+                    model.onZnak(cursor.getInt(6).toString())
+                    arrayList.add(
+                        model
+                    )
+                    if (cursor.getInt(6) == 1) {
+                        cost -= cursor.getInt(3)
+                        SaveCost.Expence -= cursor.getInt(3)
+                    } else {
+                        cost += cursor.getInt(3)
+                        SaveCost.Income += cursor.getInt(3)
+                    }
+                } while (cursor.moveToNext())
+            } else {
+                continue
+            }
+            //cost,expence,income,
+            val test = OperationDate(date[i], cost, arrayList)
+            test._date = date[i]
+            arrayExpence.add(
+                test
+            )
+            db!!.close()
+        }
+        return arrayExpence
+    }
+
+    fun Test(date: String): Cursor {
+        db = openHelper.writableDatabase
+        var cursor = db!!.query(
+            "View_Expence_Income", null, "Date = ?", arrayOf(date), null, null, null
+        )
+        return cursor
+    }
+
 }
 
