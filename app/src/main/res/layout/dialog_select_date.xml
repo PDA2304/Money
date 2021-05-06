@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="305dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,213 +16,201 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Выбрать диапазон" />
-
-        <TextView
-            style="@style/TextDialogBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="29 мар. - 4 апр. " />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="265dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TableRow
+            <LinearLayout
+                android:id="@+id/select_date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/linear_date"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <TableRow
-                    android:id="@+id/select_date"
-                    android:background="@drawable/linear_date"
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/select_date" />
+
+                    <TextView
+                        style="@style/TextDialogContent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/select_date" />
-
-                        <TextView
-                            style="@style/TextDialogContent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Выбор даты" />
+                        android:text="Выбор даты" />
 
 
-                    </LinearLayout>
+                </LinearLayout>
 
 
-                </TableRow>
+            </LinearLayout>
 
-                <TableRow
-                    android:id="@+id/all_date"
-                    android:background="@drawable/linear_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/all_date" />
-
-                        <TextView
-                            style="@style/TextDialogContent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Все время" />
-                    </LinearLayout>
-
-                </TableRow>
-            </TableRow>
-
-            <TableRow
+            <LinearLayout
+                android:id="@+id/all_date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/linear_date"
+                android:padding="10dp">
 
-                <TableRow
-                    android:id="@+id/today"
-                    android:background="@drawable/linear_date"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/all_date" />
+
+                    <TextView
+                        style="@style/TextDialogContent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:text="Все время" />
+                </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/today" />
+            </LinearLayout>
+        </LinearLayout>
 
-                        <TextView
-                            style="@style/TextDialogContent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Сегодня" />
-                    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/week"
-                    android:background="@drawable/linear_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/week_date" />
-
-                        <TextView
-                            style="@style/TextDialogContent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Неделя" />
-                    </LinearLayout>
-
-                </TableRow>
-            </TableRow>
-
-            <TableRow
+            <LinearLayout
+                android:id="@+id/today"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/linear_date"
+                android:padding="10dp">
 
-                <TableRow
-                    android:id="@+id/month"
-                    android:background="@drawable/linear_date"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/today" />
+
+                    <TextView
+                        style="@style/TextDialogContent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:text="Сегодня" />
+                </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/month_date" />
+            </LinearLayout>
 
-                        <TextView
-                            style="@style/TextDialogContent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Месяц" />
-                    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/week"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/linear_date"
+                android:padding="10dp">
 
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/year"
-                    android:background="@drawable/linear_date"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/week_date" />
+
+                    <TextView
+                        style="@style/TextDialogContent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:text="Неделя" />
+                </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/year_date" />
+            </LinearLayout>
+        </LinearLayout>
 
-                        <TextView
-                            style="@style/TextDialogContent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Год" />
-                    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                </TableRow>
-            </TableRow>
+            <LinearLayout
+                android:id="@+id/month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/linear_date"
+                android:padding="10dp">
 
-        </TableLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/month_date" />
+
+                    <TextView
+                        style="@style/TextDialogContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Месяц" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/linear_date"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/year_date" />
+
+                    <TextView
+                        style="@style/TextDialogContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Год" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
-
-
 </LinearLayout>
+
+

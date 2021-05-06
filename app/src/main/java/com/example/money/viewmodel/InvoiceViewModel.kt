@@ -7,12 +7,10 @@ import com.example.money.InvoiceResultCallBacks
 import com.example.money.R
 import com.example.money.database.DataBaseHelper
 import com.example.money.model.Invoice
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class InvoiceViewModel(private val context: View, private val listener: InvoiceResultCallBacks) : ViewModel() {
 
-    var text = context.findViewById<TextView>(R.id.text_information_invoice)
-    var btn_add = context.findViewById<FloatingActionButton>(R.id.btn_add_invoice)
+    var text: TextView = context.findViewById(R.id.text_information_invoice)
     val data = DataBaseHelper(context.context)
 
     fun Cost(): Int = data.InvoiceCostSum()
@@ -29,7 +27,7 @@ class InvoiceViewModel(private val context: View, private val listener: InvoiceR
 
     fun InvoiceShow(): ArrayList<Invoice> {
 
-        var array = data.SelectInvoice()
+        val array = data.selectInvoice()
         if (array.size != 0) {
             return array
         } else {

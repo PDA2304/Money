@@ -1,34 +1,32 @@
 package com.example.money.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
 import com.example.money.R
 import com.example.money.database.DataBaseHelper
 import com.example.money.model.Invoice
 
 
-class InvoiceSpinnerAdapter(context: Context) : ArrayAdapter<Invoice>(context, 0, InvoiceSpinnerAdapter.setArrayList(context)) {
+class InvoiceSpinnerAdapter(context: Context) : ArrayAdapter<Invoice>(context, 0, setArrayList(context)) {
 
     companion object {
         fun setArrayList(context: Context): ArrayList<Invoice> {
             val data = DataBaseHelper(context)
-            val array = data.SelectInvoice()
+            val array = data.selectInvoice()
             if (array.size != 0) {
                 return array
             } else {
-                return array
+                return ArrayList()
             }
         }
     }
 
-    var array = InvoiceSpinnerAdapter.setArrayList(context)
+    var array = setArrayList(context)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View = setInflate(position, convertView, parent)
 
@@ -43,6 +41,7 @@ class InvoiceSpinnerAdapter(context: Context) : ArrayAdapter<Invoice>(context, 0
         return view
     }
 
+    @SuppressLint("SetTextI18n")
     fun setItem(view: View, model: Invoice) {
         val tvCountry = view.findViewById<TextView>(R.id.tvCountry)
         val ivCountry = view.findViewById<ImageView>(R.id.ivCountry)
@@ -57,11 +56,11 @@ class InvoiceSpinnerAdapter(context: Context) : ArrayAdapter<Invoice>(context, 0
         ivCountry.setPadding(5,5,5,5)
         if (model.imageId == R.drawable.cash) {
             ivCountry.also {
-                it.setBackgroundResource(R.color.cash);
+                it.setBackgroundResource(R.color.cash)
             }
         } else {
             ivCountry.also {
-                it.setBackgroundResource(R.color.card);
+                it.setBackgroundResource(R.color.card)
             }
         }
 
@@ -74,7 +73,7 @@ class InvoiceSpinnerAdapter(context: Context) : ArrayAdapter<Invoice>(context, 0
         return object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, id: Int, p3: Long) {
                 Toast.makeText(spinner.context, id.toString(), Toast.LENGTH_SHORT).show()
-                position = array.get(id).ID_Invoice
+                position = array[id].ID_Invoice
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
