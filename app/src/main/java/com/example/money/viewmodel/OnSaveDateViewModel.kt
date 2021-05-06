@@ -13,11 +13,11 @@ class OnSaveDateViewModel : ViewModel() {
         savedate.value = item
     }
 
-    data class test(var date:  Date,var type:Int): Observable()
-    val Date = MutableLiveData<test>()
+    data class modelDate(var date_from:  Date,var date_to:  Date?,var type:Int): Observable()
+    val Date = MutableLiveData<modelDate>()
 
-    fun onDate(date: Date, type:Int)
+    fun onDate(date_from: Date, date_to: Date?, type:Int)
     {
-        Date.value = test(date,type)
+        Date.value = modelDate(date_from,date_to,type)
     }
 }

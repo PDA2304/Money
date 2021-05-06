@@ -14,8 +14,8 @@ class OperationDateViewModel(val context: View) : ViewModel() {
     private val data = DataBaseHelper(context.context)
 
     @SuppressLint("SetTextI18n")
-    fun onOperationDateAll(type: Int, date: Date, arrayTextView: ArrayList<TextView>): ArrayList<OperationDate> {
-        val array = data.OperationDateAll(type, date)
+    fun onOperationDateAll(type: Int, date_from: Date,date_to: Date?, arrayTextView: ArrayList<TextView>): ArrayList<OperationDate> {
+        val array = data.OperationDateAll(type, date_from,date_to)
         if (array.size == 0) {
             arrayTextView[0].visibility = View.VISIBLE
             arrayTextView[1].text = "0 P"

@@ -173,29 +173,31 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
     }
 
     @SuppressLint("Recycle", "SimpleDateFormat")
-    private fun allDate(type: Int, Date: Date): ArrayList<String> {
+    private fun allDate(type: Int, date_from: Date, date_to: Date?): ArrayList<String> {
         db = openHelper.writableDatabase
         var date = ArrayList<String>()
         var c: Cursor? = null
         if (type == 1 || type == 3) {
-            var format = SimpleDateFormat("dd.MM.y")
-            Log.i("Date", format.format(Date))
-            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date  =  ?", arrayOf(format.format(Date)), null, null, null)// День
+            val format = SimpleDateFormat("dd.MM.y")
+            Log.i("Date", format.format(date_from))
+            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date  =  ?", arrayOf(format.format(date_from)), null, null, null)// День
         }
-
         if (type == 2) c = db!!.rawQuery("SELECT DISTINCT Date from View_Expence_Income", null) // Все даты
-        if (type == 4) c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date  BETWEEN  ? and ?", arrayOf("05.04.2021", "11.04.2021"), null, null, null) /// Неделя
+        if (type == 4) {
+            val format = SimpleDateFormat("dd.MM.y")
+            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date  BETWEEN  ? and ?", arrayOf(format.format(date_from), format.format(date_to)), null, null, null) /// Неделя
+        }
         if (type == 5) {
-            var format = SimpleDateFormat(".MM.y")
-            Log.i("Date", format.format(Date))
-            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date Like ?", arrayOf("%${format.format(Date)}"), null, null, null) // месяц
-
+            val format = SimpleDateFormat(".MM.y")
+            Log.i("Date", format.format(date_from))
+            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date Like ?", arrayOf("%${format.format(date_from)}"), null, null, null) // месяц
         }
         if (type == 6) {
-            var format = SimpleDateFormat(".y")
-            Log.i("Date", format.format(Date))
-            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date Like ? ", arrayOf("%${format.format(Date)}"), null, null, null) //Год
+            val format = SimpleDateFormat(".y")
+            Log.i("Date", format.format(date_from))
+            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date Like ? ", arrayOf("%${format.format(date_from)}"), null, null, null) //Год
         }
+
         if (c!!.moveToFirst()) {
             do {
                 date.add(
@@ -210,9 +212,9 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         return date
     }
 
-    fun OperationDateAll(type: Int, Date: Date): ArrayList<OperationDate> {
+    fun OperationDateAll(type: Int, date_from: Date, date_to: Date?): ArrayList<OperationDate> {
         val arrayExpence = ArrayList<OperationDate>()
-        val date = allDate(type, Date)
+        val date = allDate(type, date_from, date_to)
         SaveCost.Expence = 0
         SaveCost.Income = 0
 

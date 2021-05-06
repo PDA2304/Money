@@ -37,7 +37,6 @@ class DialogDateFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.dialog_select_date, container, false)
         return view
     }
@@ -48,7 +47,6 @@ class DialogDateFragment : DialogFragment() {
 
         // Выбор даты
         select_date.setOnClickListener {
-            var test = ""
 
             @RequiresApi(Build.VERSION_CODES.N)
             fun clickDataPicker(view: View) {
@@ -56,17 +54,13 @@ class DialogDateFragment : DialogFragment() {
                 val dpd = DatePickerDialog(view.context, { _, year, monthOfYear, dayOfMonth ->
                     df = SimpleDateFormat("EEE, dd MMM y")
                     c.set(year, monthOfYear, dayOfMonth)
-                    test = df!!.format(c.time)
                 }, Year, Month, Day)
                 dpd.setOnDismissListener {
-                    model.onSaveDate(test)
-                    model.onDate(c.time,1)
+                    getDate(c.time , null  , 1 , SimpleDateFormat("EEE, dd MMM y"))
                 }
 
                 dpd.show()
             }
-//
-            model.onSaveDate(test)
 
             clickDataPicker(it)
             dismiss()
@@ -75,46 +69,42 @@ class DialogDateFragment : DialogFragment() {
         //Все время
         all_date.setOnClickListener {
             model.onSaveDate("Весь период")
-            model.onDate(c.time,2)
+            model.onDate(c.time,null,2)
             dismiss()
         }
 
         // сегодня
         today.setOnClickListener {
-            df = SimpleDateFormat("EEE, dd MMM y")
-            model.onSaveDate(df!!.format(c.time))
-            model.onDate(c.time,3)
-            dismiss()
+            getDate(c.time , null  , 3 , SimpleDateFormat("EEE, dd MMM y"))
         }
 
         //Неделя
         week.setOnClickListener {
-            model.onSaveDate(getMondaySunday())
+            model.onSaveDate(getMondaySunday(SimpleDateFormat("dd MMM")))
             dismiss()
         }
 
         // Месяц
         month.setOnClickListener {
-            df = SimpleDateFormat("LLLL")
-            model.onSaveDate(df!!.format(c.time).toString())
-            model.onDate(c.time,5)
-            dismiss()
+            getDate(c.time , null  , 5 , SimpleDateFormat("LLLL"))
         }
-
 
         // Выбор года
         year.setOnClickListener {
-            df = SimpleDateFormat("y г.")
-            model.onSaveDate(df!!.format(c.time))
-            model.onDate(c.time,6)
-            dismiss()
+            getDate(c.time , null  , 6 , SimpleDateFormat("y г."))
         }
+    }
+
+    fun getDate(date_from: Date , date_to:Date?,type:Int, format: SimpleDateFormat)
+    {
+        model.onSaveDate(format.format(date_from))
+        model.onDate(date_from,date_to,type)
+        dismiss()
     }
 
     // Функция которая возвращает Понедельник и Воскресенье текущиего дня
     @SuppressLint("SimpleDateFormat")
-    fun getMondaySunday(): String {
-        df = SimpleDateFormat("dd MMM")
+    fun getMondaySunday(format: SimpleDateFormat): String {
         val date = Date()
         c.time = date
         c[Calendar.DAY_OF_WEEK] = Calendar.MONDAY
@@ -122,8 +112,8 @@ class DialogDateFragment : DialogFragment() {
 
         c[Calendar.DAY_OF_WEEK] = Calendar.SUNDAY
         val sunday = c.time
-        return "${df!!.format(monday)} - ${df!!.format(sunday)}"
+        model.onDate(monday,sunday,4)
+        return "${format.format(monday)} - ${format.format(sunday)}"
     }
 
 }
-

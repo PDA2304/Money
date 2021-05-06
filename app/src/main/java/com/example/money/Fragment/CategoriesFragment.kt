@@ -36,6 +36,7 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
     val model: OnSaveDateViewModel by activityViewModels()
     var isRotate = false
     val c = Calendar.getInstance()
+
     @SuppressLint("SimpleDateFormat")
     var df = SimpleDateFormat("EEE, dd MMM y")
 
@@ -59,7 +60,7 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
 
 //        val adapter = OperationDateAdapter(viewModel.test, view.context)
         val adapter = OperationDateAdapter(view.context)
-        adapter.operations = viewModel.onOperationDateAll(1, c.time,arrayTextView)
+        adapter.operations = viewModel.onOperationDateAll(1, c.time, c.time, arrayTextView)
 
         recyclerview_operations_date.also {
             it.layoutManager = LinearLayoutManager(view.context)
@@ -74,12 +75,12 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
         Animation.init(text_expence)
         Animation.init(text_income)
 
-        model.savedate.observe(viewLifecycleOwner,  { item ->
+        model.savedate.observe(viewLifecycleOwner, { item ->
             view.findViewById<TextView>(R.id.text_categories_date).text = item
         })
 
         model.Date.observe(viewLifecycleOwner, { item ->
-            adapter.refresh(viewModel.onOperationDateAll(item.type, item.date, arrayTextView))
+            adapter.refresh(viewModel.onOperationDateAll(item.type, item.date_from, item.date_to, arrayTextView))
         })
 
         btn_add_operations.setOnClickListener {
