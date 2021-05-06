@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.example.money.model.OperationDate" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text_date_item_operations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@{model.date}"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/btn_dialog_textSize"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerview_operations"
+            app:layout_constraintStart_toStartOf="@+id/recyclerview_operations"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Понедельник, 26 апреля 2021г." />
+
+        <TextView
+            android:id="@+id/text_cost_item_operations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/blue"
+            android:text="@{String.valueOf(model.cost)}"
+            android:textSize="@dimen/btn_dialog_textSize"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerview_operations"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1000 P" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_operations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_date_item_operations"
+            tools:listitem="@layout/item_operations" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
