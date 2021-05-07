@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.example.money.model.*
+import java.sql.RowId
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -221,7 +222,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         if (date.isEmpty()) return ArrayList<OperationDate>()
 
         for (i in 0..date.size - 1) {
-            val cursor = Test(date[i], Invoice_ID)
+            val cursor = onSelectInvoice(date[i], Invoice_ID)
             val arrayList = ArrayList<Operations>()
             var cost : Long = 0
 
@@ -261,7 +262,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         return arrayExpence
     }
 
-    fun Test(date: String, Invoice_ID: Int): Cursor {
+    fun onSelectInvoice(date: String, Invoice_ID: Int): Cursor {
         db = openHelper.writableDatabase
         if (Invoice_ID == 0) return db!!.query(
             "View_Expence_Income", null, "Date = ?", arrayOf(date), null, null, null
@@ -272,6 +273,23 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
             )
         }
     }
+
+    fun onDeleteExpence(ID: Int)
+    {
+        db = openHelper.writableDatabase
+        db!!.execSQL("PRAGMA foreign_keys=ON");
+        db!!.delete("Expence", "ID_Expence =$ID", null)
+        db!!.close()
+    }
+
+    fun onDeleteIncome(ID: Int)
+    {
+        db = openHelper.writableDatabase
+        db!!.execSQL("PRAGMA foreign_keys=ON");
+        db!!.delete("Income", "ID_Income =$ID", null)
+        db!!.close()
+    }
+
 
 }
 

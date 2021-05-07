@@ -64,7 +64,7 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
         viewModel = ViewModelProvider(this, OperationsDateModelFactory(view)).get(OperationDateViewModel::class.java)
 
 //        val adapter = OperationDateAdapter(viewModel.test, view.context)
-        val adapter = OperationDateAdapter(view.context)
+        val adapter = OperationDateAdapter(view.context, arrayTextView)
         adapter.operations = viewModel!!.onOperationDateAll(1, c.time, c.time, 0, arrayTextView)
         SaveOperations.also { it.Invoice_ID = 0; it.date_from = c.time; it.date_to = c.time; it.type = 1 }
         recyclerview_operations_date.also {
