@@ -43,7 +43,7 @@ class InvoiceViewModel(private val context: View, private val listener: InvoiceR
     fun invoiceShowSelect(): ArrayList<Invoice> {
         val text_null_invoice: TextView = context.findViewById(R.id.text_null_invoice)
         val card_recycler_view_invoice: CardView = context.findViewById(R.id.card_recycler_view_invoice)
-        val invoice_all: LinearLayout = context.findViewById(R.id.invoice_all)
+        val invoice_all: LinearLayout = context.findViewById(R.id.select_invoice_all)
         val array = data.selectInvoice()
         if (array.size != 0) {
             card_recycler_view_invoice.visibility = View.VISIBLE

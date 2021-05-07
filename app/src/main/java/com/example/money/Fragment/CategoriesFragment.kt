@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
@@ -81,6 +82,10 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
 
         model.savedate.observe(viewLifecycleOwner, { item ->
             view.findViewById<TextView>(R.id.text_categories_date).text = item
+        })
+
+        model.saveNameInvoice.observe(viewLifecycleOwner, { item ->
+            view.findViewById<TextView>(R.id.text_name_invoice).text = item
         })
 
         model.Date.observe(viewLifecycleOwner, { item ->
@@ -188,7 +193,6 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
         spinner.adapter = adapter
         spinner.onItemSelectedListener = adapter.select(spinner)
 
-
         val create = buid.show()
 
         btnAdd.setOnClickListener {
@@ -198,7 +202,7 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
                     it.isErrorEnabled = true
                 }
             }
-            if (!cost.isErrorEnabled) {
+            if (!cost.isErrorEnabled && spinner.size != 0) {
                 when (operations) {
                     "Доход" -> {
                         db.InsertIncome(savedate, adapterIncome.position, cost.editText!!.text.toString().toInt(), description.editText!!.text.toString(), adapter.position)

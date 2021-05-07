@@ -15,6 +15,13 @@ class OnSaveDateViewModel : ViewModel() {
         savedate.value = item
     }
 
+    val saveNameInvoice = MutableLiveData<String>()
+
+    fun onSaveNameInvoice(item: String)
+    {
+        saveNameInvoice.value = item
+    }
+
     data class modelDate(var date_from: Date, var date_to: Date?, var Invoice_ID: Int, var type: Int) : Observable()
 
     val Date = MutableLiveData<modelDate>()

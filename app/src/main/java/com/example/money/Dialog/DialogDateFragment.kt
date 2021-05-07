@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.money.R
+import com.example.money.model.SaveOperations
 import com.example.money.viewmodel.OnSaveDateViewModel
 
 import kotlinx.android.synthetic.main.dialog_select_date.*
@@ -72,7 +73,7 @@ class DialogDateFragment : DialogFragment() {
         //Все время
         all_date.setOnClickListener {
             model.onSaveDate("Весь период")
-            model.onDate(c.time, c.time,0,2)
+            model.onDate(c.time, c.time,SaveOperations.Invoice_ID,2)
             dismiss()
         }
 
@@ -100,7 +101,7 @@ class DialogDateFragment : DialogFragment() {
 
     fun getDate(date_from: Date, date_to: Date, type: Int, format: SimpleDateFormat) {
         model.onSaveDate(format.format(date_from))
-        model.onDate(date_from, date_to,0,type)
+        model.onDate(date_from, date_to,SaveOperations.Invoice_ID,type)
         dismiss()
     }
 
@@ -114,7 +115,7 @@ class DialogDateFragment : DialogFragment() {
 
         c[Calendar.DAY_OF_WEEK] = Calendar.SUNDAY
         val sunday = c.time
-        model.onDate(monday, sunday, 0,4)
+        model.onDate(monday, sunday, SaveOperations.Invoice_ID,4)
         return "${format.format(monday)} - ${format.format(sunday)}"
     }
 
