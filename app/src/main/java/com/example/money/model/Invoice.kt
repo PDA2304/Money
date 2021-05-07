@@ -16,14 +16,14 @@ data class Invoice(
     var ID_Invoice: Int,
     var Name: String,
     var Type_ID_Invoice: Int,
-    var Cost: Int,
+    var Cost: Long,
     var image: Int
 ) : Observable() {
 
     var _costToString: String
         get() = Cost.toString() + " P"
         set(value) {
-            this.Cost = value.toInt()
+            this.Cost = value.toLong()
         }
 
     var imageId: Int

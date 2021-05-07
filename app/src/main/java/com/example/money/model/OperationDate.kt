@@ -1,11 +1,12 @@
 package com.example.money.model
 
 import android.annotation.SuppressLint
+import android.util.Log
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class OperationDate(var date: String,var Cost: Int, var expence: ArrayList<Operations>) : Observable() {
+class OperationDate(var date: String,var Cost: Long, var expence: ArrayList<Operations>) : Observable() {
     var _date: String
         get() = this.date
         @SuppressLint("SimpleDateFormat") set(value) {

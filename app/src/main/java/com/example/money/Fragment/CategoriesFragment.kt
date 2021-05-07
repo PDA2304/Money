@@ -205,10 +205,10 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
             if (!cost.isErrorEnabled && spinner.size != 0) {
                 when (operations) {
                     "Доход" -> {
-                        db.InsertIncome(savedate, adapterIncome.position, cost.editText!!.text.toString().toInt(), description.editText!!.text.toString(), adapter.position)
+                        db.InsertIncome(savedate, adapterIncome.position, cost.editText!!.text.toString().toLong(), description.editText!!.text.toString(), adapter.position)
                     }
                     "Расход" -> {
-                        db.InsertExpence(savedate, adapterExpence.position, cost.editText!!.text.toString().toInt(), description.editText!!.text.toString(), adapter.position)
+                        db.InsertExpence(savedate, adapterExpence.position, cost.editText!!.text.toString().toLong(), description.editText!!.text.toString(), adapter.position)
                     }
                 }
                 create.dismiss()

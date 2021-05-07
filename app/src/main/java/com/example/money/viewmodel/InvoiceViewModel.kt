@@ -14,7 +14,7 @@ class InvoiceViewModel(private val context: View, private val listener: InvoiceR
 
     val data = DataBaseHelper(context.context)
 
-    fun Cost(): Int = data.InvoiceCostSum()
+    fun Cost(): Long = data.InvoiceCostSum()
 
     fun Count(): Int = data.InvoiceCount()
 

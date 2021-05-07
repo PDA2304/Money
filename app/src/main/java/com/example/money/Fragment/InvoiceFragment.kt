@@ -194,7 +194,7 @@ class InvoiceFragment : Fragment(), InvoiceResultCallBacks, InvoiceAdapter.Click
             }
             adapter.insertData(item)
         })
-        model.сostinvoice.observe(viewLifecycleOwner, Observer<Int> { item ->
+        model.сostinvoice.observe(viewLifecycleOwner, { item ->
             view.findViewById<TextView>(R.id.text_invoice_all).text = item.toString()
         })
     }

@@ -52,7 +52,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
                 invoice.imageId = cursor.getInt(2)
                 arrayList.add(
                     Invoice(
-                        cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getInt(3), invoice.imageId
+                        cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getLong(3), invoice.imageId
                     )
                 )
             } while (cursor.moveToNext())
@@ -67,12 +67,12 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
 
 
     @SuppressLint("Recycle")
-    fun InvoiceCostSum(): Int {
+    fun InvoiceCostSum(): Long {
         db = openHelper.writableDatabase
         val cursor: Cursor = db!!.rawQuery("SELECT SUM(Cost) FROM Invoice", null)
         if (cursor.moveToFirst()) {
             do {
-                return cursor.getInt(0)
+                return cursor.getLong(0)
             } while (cursor.moveToNext())
         } else {
             return 0
@@ -115,7 +115,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         db!!.close()
     }
 
-    fun InsertInvoice(ID_Invoice: Int, Name_Invoice: String, Type_ID_Invoice: Int, Cost: Int) {
+    fun InsertInvoice(ID_Invoice: Int, Name_Invoice: String, Type_ID_Invoice: Int, Cost: Long) {
         db = openHelper.writableDatabase
         val newValues = ContentValues()
         newValues.put("ID_Invoice", ID_Invoice)
@@ -143,7 +143,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
     }
 
 
-    fun InsertIncome(Date: String, Category_Income_ID: Int, Cost: Int, Description: String, Invoice_ID: Int) {
+    fun InsertIncome(Date: String, Category_Income_ID: Int, Cost: Long, Description: String, Invoice_ID: Int) {
         db = openHelper.writableDatabase
         val newValues = ContentValues()
         newValues.put("Date", Date)
@@ -155,7 +155,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         db!!.close()
     }
 
-    fun InsertExpence(Date: String, Category_expence_ID: Int, Cost: Int, Description: String, Invoice_ID: Int) {
+    fun InsertExpence(Date: String, Category_expence_ID: Int, Cost: Long, Description: String, Invoice_ID: Int) {
         db = openHelper.writableDatabase
         val newValues = ContentValues()
         newValues.put("Date", Date)
@@ -223,7 +223,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         for (i in 0..date.size - 1) {
             val cursor = Test(date[i], Invoice_ID)
             val arrayList = ArrayList<Operations>()
-            var cost = 0
+            var cost : Long = 0
 
             if (cursor.moveToFirst()) {
                 do {
@@ -240,11 +240,11 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
                         model
                     )
                     if (cursor.getInt(6) == 1) {
-                        cost -= cursor.getInt(3)
-                        SaveCost.Expence -= cursor.getInt(3)
+                        cost -= cursor.getLong(3)
+                        SaveCost.Expence -= cursor.getLong(3)
                     } else {
-                        cost += cursor.getInt(3)
-                        SaveCost.Income += cursor.getInt(3)
+                        cost += cursor.getLong(3)
+                        SaveCost.Income += cursor.getLong(3)
                     }
                 } while (cursor.moveToNext())
             } else {

@@ -107,7 +107,7 @@ class DialogAddInvoiceFragment : DialogFragment(), InvoiceResultCallBacks {
             }
 
             if (!cost.isErrorEnabled && !name_invoice.isErrorEnabled) {
-                val invoice = Invoice(db.SelectIDInvoice(), name_invoice.editText!!.text.toString().trim(), type_id, cost.editText!!.text.toString().trim().toInt(), 0)
+                val invoice = Invoice(db.SelectIDInvoice(), name_invoice.editText!!.text.toString().trim(), type_id, cost.editText!!.text.toString().trim().toLong(), 0)
 
 
                 invoice.imageId = type_id
@@ -115,7 +115,7 @@ class DialogAddInvoiceFragment : DialogFragment(), InvoiceResultCallBacks {
                 array.add(invoice)
 
                 model.onSaveInvoice(array)
-                db.InsertInvoice(db.SelectIDInvoice(), name_invoice.editText!!.text.toString().trim(), type_id, cost.editText!!.text.toString().toInt())
+                db.InsertInvoice(db.SelectIDInvoice(), name_invoice.editText!!.text.toString().trim(), type_id, cost.editText!!.text.toString().toLong())
                 model.onCostInvoice(db.InvoiceCostSum())
                 array.clear()
 

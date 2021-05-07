@@ -11,9 +11,9 @@ class OnSaveInvoiceViewModel : ViewModel() {
         saveinvoice.value = item
     }
 
-    val сostinvoice = MutableLiveData<Int>()
+    val сostinvoice = MutableLiveData<Long>()
 
-    fun onCostInvoice(item: Int) {
+    fun onCostInvoice(item: Long) {
         сostinvoice.value = item
     }
 }
