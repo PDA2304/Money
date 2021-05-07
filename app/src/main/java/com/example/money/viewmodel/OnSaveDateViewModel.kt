@@ -23,13 +23,3 @@ class OnSaveDateViewModel : ViewModel() {
         Date.value = modelDate(date_from, date_to, Invoice_ID, type)
     }
 }
-
-class SaveOperations {
-    companion object {
-        var date_from = Date()
-        var date_to: Date? = null
-        var Invoice_ID = 0
-        var type = 0
-    }
-
-}

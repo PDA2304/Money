@@ -22,9 +22,9 @@ import com.example.money.adapter.InvoiceSpinnerAdapter
 import com.example.money.adapter.OperationDateAdapter
 import com.example.money.database.DataBaseHelper
 import com.example.money.factory.OperationsDateModelFactory
+import com.example.money.model.SaveOperations
 import com.example.money.viewmodel.OnSaveDateViewModel
 import com.example.money.viewmodel.OperationDateViewModel
-import com.example.money.viewmodel.SaveOperations
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_categories.*
 import java.text.SimpleDateFormat
