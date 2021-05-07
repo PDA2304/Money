@@ -12,6 +12,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.money.R
 import com.example.money.viewmodel.OnSaveDateViewModel
+
 import kotlinx.android.synthetic.main.dialog_select_date.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -56,7 +57,7 @@ class DialogDateFragment : DialogFragment() {
                     test = df!!.format(c.time)
                 }, Year, Month, Day)
                 dpd.setOnDismissListener {
-                    getDate(c.time, null, 1, SimpleDateFormat("EEE, dd MMM y"))
+                    getDate(c.time, c.time, 1, SimpleDateFormat("EEE, dd MMM y"))
                 }
 
                 dpd.show()
@@ -71,13 +72,13 @@ class DialogDateFragment : DialogFragment() {
         //Все время
         all_date.setOnClickListener {
             model.onSaveDate("Весь период")
-            model.onDate(c.time, null, 0,2,)
+            model.onDate(c.time, c.time,0,2)
             dismiss()
         }
 
         // сегодня
         today.setOnClickListener {
-            getDate(c.time, null, 3, SimpleDateFormat("EEE, dd MMM y"))
+            getDate(c.time, c.time, 3, SimpleDateFormat("EEE, dd MMM y"))
         }
 
         //Неделя
@@ -88,18 +89,18 @@ class DialogDateFragment : DialogFragment() {
 
         // Месяц
         month.setOnClickListener {
-            getDate(c.time, null, 5, SimpleDateFormat("LLLL"))
+            getDate(c.time, c.time, 5, SimpleDateFormat("LLLL"))
         }
 
         // Выбор года
         year.setOnClickListener {
-            getDate(c.time, null, 6, SimpleDateFormat("y г."))
+            getDate(c.time, c.time, 6, SimpleDateFormat("y г."))
         }
     }
 
-    fun getDate(date_from: Date, date_to: Date?, type: Int, format: SimpleDateFormat) {
+    fun getDate(date_from: Date, date_to: Date, type: Int, format: SimpleDateFormat) {
         model.onSaveDate(format.format(date_from))
-        model.onDate(date_from, date_to, 0,type)
+        model.onDate(date_from, date_to,0,type)
         dismiss()
     }
 

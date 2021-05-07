@@ -9,7 +9,7 @@ class OperationDate(var date: String,var Cost: Int, var expence: ArrayList<Opera
     var _date: String
         get() = this.date
         @SuppressLint("SimpleDateFormat") set(value) {
-            val getdate = SimpleDateFormat("dd.MM.yyyy")
+            val getdate = SimpleDateFormat("y-MM-dd")
             val setdate = SimpleDateFormat("EEEE, dd MMMM, y г.")
             val da = getdate.parse(value)
             this.date = setdate.format(da)

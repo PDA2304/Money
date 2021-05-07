@@ -24,6 +24,7 @@ import com.example.money.database.DataBaseHelper
 import com.example.money.factory.OperationsDateModelFactory
 import com.example.money.viewmodel.OnSaveDateViewModel
 import com.example.money.viewmodel.OperationDateViewModel
+import com.example.money.viewmodel.SaveOperations
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_categories.*
 import java.text.SimpleDateFormat
@@ -47,21 +48,24 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
         return view
     }
 
+    val arrayTextView = ArrayList<TextView>()
+    var viewModel: OperationDateViewModel? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val arrayTextView = ArrayList<TextView>()
+        arrayTextView.clear()
         arrayTextView.add(text_operations_null)
         arrayTextView.add(text_expence_select)
         arrayTextView.add(text_income_select)
         arrayTextView.add(text_balans)
-        val viewModel = ViewModelProvider(this, OperationsDateModelFactory(view)).get(OperationDateViewModel::class.java)
+
+        viewModel = ViewModelProvider(this, OperationsDateModelFactory(view)).get(OperationDateViewModel::class.java)
 
 //        val adapter = OperationDateAdapter(viewModel.test, view.context)
         val adapter = OperationDateAdapter(view.context)
-        adapter.operations = viewModel.onOperationDateAll(1, c.time, c.time, 0, arrayTextView)
-
+        adapter.operations = viewModel!!.onOperationDateAll(1, c.time, c.time, 0, arrayTextView)
+        SaveOperations.also { it.Invoice_ID = 0; it.date_from = c.time; it.date_to = c.time; it.type = 1 }
         recyclerview_operations_date.also {
             it.layoutManager = LinearLayoutManager(view.context)
             it.setHasFixedSize(true)
@@ -80,7 +84,8 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
         })
 
         model.Date.observe(viewLifecycleOwner, { item ->
-            adapter.refresh(viewModel.onOperationDateAll(item.type, item.date_from, item.date_to, item.Invoice_ID, arrayTextView))
+            adapter.refresh(viewModel!!.onOperationDateAll(item.type, item.date_from, item.date_to, item.Invoice_ID, arrayTextView))
+            SaveOperations.also { it.Invoice_ID = item.Invoice_ID; it.date_from = item.date_from; it.date_to = item.date_to; it.type = item.type }
         })
 
         btn_add_operations.setOnClickListener {
@@ -93,16 +98,16 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
         }
 
         add_income.setOnClickListener {
-            showAlertDialog(view, "Доход")
+            showAlertDialog(view, "Доход", adapter)
         }
         add_expence.setOnClickListener {
-            showAlertDialog(view, "Расход")
+            showAlertDialog(view, "Расход", adapter)
         }
 
     }
 
     @SuppressLint("SimpleDateFormat", "InflateParams")
-    fun showAlertDialog(view: View, operations: String) {
+    fun showAlertDialog(view: View, operations: String, adapterOperations: OperationDateAdapter) {
         isRotate = Animation.rotateFab(btn_add_operations, !isRotate);
         hide()
         val db = DataBaseHelper(view.context)
@@ -121,7 +126,7 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
         val spinner = view.findViewById<Spinner>(R.id.spinner_invoice)
         val description = view.findViewById<TextInputLayout>(R.id.description)
         var isShow = false
-        val format = SimpleDateFormat("dd.MM.y")
+        val format = SimpleDateFormat("y-MM-dd")
 
         var savedate = format.format(c.time)
 
@@ -206,6 +211,8 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
             } else {
                 Toast.makeText(view.context, "Введите данные корректно", Toast.LENGTH_SHORT).show()
             }
+
+            adapterOperations.refresh(viewModel!!.onOperationDateAll(SaveOperations.type, SaveOperations.date_from, SaveOperations.date_to, SaveOperations.Invoice_ID, arrayTextView))
         }
         cancel.setOnClickListener { create.cancel() }
 

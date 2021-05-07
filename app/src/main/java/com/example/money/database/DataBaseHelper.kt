@@ -178,24 +178,24 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         var date = ArrayList<String>()
         var c: Cursor? = null
         if (type == 1 || type == 3) {
-            val format = SimpleDateFormat("dd.MM.y")
+            val format = SimpleDateFormat("y-MM-dd")
             Log.i("Date", format.format(date_from))
             c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date  =  ?", arrayOf(format.format(date_from)), null, null, null)// День
         }
         if (type == 2) c = db!!.rawQuery("SELECT DISTINCT Date from View_Expence_Income", null) // Все даты
         if (type == 4) {
-            val format = SimpleDateFormat("dd.MM.y")
+            val format = SimpleDateFormat("y-MM-dd")
             c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date  BETWEEN  ? and ?", arrayOf(format.format(date_from), format.format(date_to)), null, null, null) /// Неделя
         }
         if (type == 5) {
-            val format = SimpleDateFormat(".MM.y")
+            val format = SimpleDateFormat("y-MM-")
             Log.i("Date", format.format(date_from))
-            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date Like ?", arrayOf("%${format.format(date_from)}"), null, null, null) // месяц
+            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date Like ?", arrayOf("${format.format(date_from)}%"), null, null, null) // месяц
         }
         if (type == 6) {
-            val format = SimpleDateFormat(".y")
+            val format = SimpleDateFormat("y-")
             Log.i("Date", format.format(date_from))
-            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date Like ? ", arrayOf("%${format.format(date_from)}"), null, null, null) //Год
+            c = db!!.query("View_Expence_Income", arrayOf("DISTINCT Date"), "Date Like ? ", arrayOf("${format.format(date_from)}%"), null, null, null) //Год
         }
 
         if (c!!.moveToFirst()) {
@@ -268,7 +268,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         )else
         {
             return db!!.query(
-                "View_Expence_Income", null, "Date = ? Invoice_ID = ?", arrayOf(date, Invoice_ID.toString()), null, null, null
+                "View_Expence_Income", null, "Date = ? AND Invoice_ID = ?", arrayOf(date, Invoice_ID.toString()), null, null, null
             )
         }
     }
