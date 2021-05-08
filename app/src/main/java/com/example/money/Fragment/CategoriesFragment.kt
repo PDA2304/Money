@@ -2,6 +2,7 @@ package com.example.money.Fragment
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,6 +16,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.money.Animation
+import com.example.money.DiagramActivity
 import com.example.money.InvoiceResultCallBacks
 import com.example.money.R
 import com.example.money.adapter.ExpenceSpinnerAdapter
@@ -54,6 +56,15 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<LinearLayout>(R.id.to_diagram_income).setOnClickListener() {
+            diagram(1,view)
+
+        }
+        view.findViewById<LinearLayout>(R.id.to_diagram_expence).setOnClickListener() {
+            diagram(2,view)
+        }
+
 
         arrayTextView.clear()
         arrayTextView.add(text_operations_null)
@@ -110,6 +121,14 @@ class CategoriesFragment : Fragment(), InvoiceResultCallBacks {
             showAlertDialog(view, "Расход", adapter)
         }
 
+    }
+
+    private fun diagram(type: Int, view: View) {
+        var intent = Intent(view.context, DiagramActivity::class.java)
+        var array = viewModel!!.onOperationDateAll(SaveOperations.type, SaveOperations.date_from, SaveOperations.date_to, SaveOperations.Invoice_ID, arrayTextView)
+        intent.putExtra("operations", array)
+        intent.putExtra("type", type)
+        startActivity(intent)
     }
 
     @SuppressLint("SimpleDateFormat", "InflateParams")

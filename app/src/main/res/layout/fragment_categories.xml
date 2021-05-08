@@ -40,8 +40,8 @@
 
 
                 <TextView
-                    style="@style/TextInformation"
                     android:id="@+id/text_name_invoice"
+                    style="@style/TextInformation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -67,6 +67,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/to_diagram_income"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -96,6 +97,7 @@
                             android:background="@color/information" />
 
                         <LinearLayout
+                            android:id="@+id/to_diagram_expence"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -109,8 +111,8 @@
                                 android:text="Расходы >" />
 
                             <TextView
-                                style="@style/Text"
                                 android:id="@+id/text_expence_select"
+                                style="@style/Text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="right"
@@ -140,45 +142,17 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="right"
-                                android:text="Баланс за период>" />
+                                android:text="Баланс за период" />
 
                             <TextView
-                                style="@style/Text"
                                 android:id="@+id/text_balans"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="0" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:background="@color/information" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/TextInformation"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="Остаток" />
-
-                            <TextView
                                 style="@style/Text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="right"
                                 android:gravity="right"
                                 android:text="0" />
                         </LinearLayout>
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -197,8 +171,8 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <TextView
-                style="@style/Text"
                 android:id="@+id/text_operations_null"
+                style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
