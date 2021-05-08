@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context=".EditOperationsActivity">
+
+    <include layout="@layout/toolbar_edit_operations"/>
+
+    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="12"
+                app:hintTextAppearance="@style/EditTextHeader">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/blue"
+                    android:hint="Сумма операции"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:text="0" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:foreground="@drawable/line"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    style="@style/TextHintDialogOperations"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Категория" />
+
+                <Spinner
+                    android:id="@+id/spinner_income"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    tools:listitem="@layout/item_spinner" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:foreground="@drawable/line"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    style="@style/TextHintDialogOperations"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Счет" />
+
+                <Spinner
+                    android:id="@+id/spinner_invoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_spinner" />
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="150"
+                app:hintTextAppearance="@style/EditTextHeader">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/blue"
+                    android:hint="Описание"
+                    android:maxLength="150" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:foreground="@drawable/line"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    style="@style/TextHintDialogOperations"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Дата" />
+
+                <TextView
+                    android:id="@+id/text_date"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Понедельник, 3 мая 2021" />
+
+            </LinearLayout>
+
+
+            <DatePicker
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_add_operations"
+            style="@style/ButtonDialog"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="Добавить" />
+
+    </LinearLayout>
+</LinearLayout>

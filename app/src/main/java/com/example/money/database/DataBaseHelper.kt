@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.example.money.model.*
-import java.sql.RowId
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -290,6 +289,31 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         db!!.close()
     }
 
+    fun onUpdateExpence(operations: Operations)
+    {
+        db = openHelper.writableDatabase
+        val newValues = ContentValues()
+        newValues.put("Date",operations.Date)
+        newValues.put("Category_Expence_ID",operations.Catagory_ID )
+        newValues.put("Cost", operations.Cost)
+        newValues.put("Description", operations.Description )
+        newValues.put("Invoice_ID", operations.Invoice_ID)
+        db!!.update("Expence", newValues, "ID_Expence = ${operations.ID}", null)
+        db!!.close()
+    }
+
+    fun onUpdateIncome(operations: Operations)
+    {
+        db = openHelper.writableDatabase
+        val newValues = ContentValues()
+        newValues.put("Date",operations.Date)
+        newValues.put("Category_Income_ID",operations.Catagory_ID )
+        newValues.put("Cost", operations.Cost)
+        newValues.put("Description", operations.Description )
+        newValues.put("Invoice_ID", operations.Invoice_ID)
+        db!!.update("Income", newValues, "ID_Income = ${operations.ID}", null)
+        db!!.close()
+    }
 
 }
 

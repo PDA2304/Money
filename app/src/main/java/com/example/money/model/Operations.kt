@@ -1,5 +1,6 @@
 package com.example.money.model
 
+import android.os.Parcelable
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -8,11 +9,13 @@ import androidx.databinding.BindingAdapter
 import com.example.money.R
 import com.example.money.enumitem.ItemExpenceSpinner
 import com.example.money.enumitem.ItemIncomeSpinner
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 import java.util.*
-
+@Parcelize
 data class Operations(
-    var ID: Int, var Date: String?, var Catagory_ID: Int, var Cost: String, var Description: String?, var Invoice_ID: Int, var Type_table: Int
-) : Observable() {
+  var ID:   @RawValue Int, var Date:  @RawValue String?, var Catagory_ID:   @RawValue Int, var Cost:   @RawValue String, var Description:  @RawValue String?, var Invoice_ID:  @RawValue Int, var Type_table:  @RawValue Int
+) : Observable(), Parcelable {
 
     var znak: String = ""
 
