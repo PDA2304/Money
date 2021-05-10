@@ -13,6 +13,7 @@
         android:title="Счета"
         app:showAsAction="always"/>
     <item
+        android:visible="false"
         android:id="@+id/search"
         android:icon="@drawable/ic_search"
         android:title="поиск"
