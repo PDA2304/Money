@@ -123,4 +123,8 @@
         <item name="android:textColor">@color/blue</item>
     </style>
 
+
+    <style name="LaunchScreenTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/launchscreen</item>
+    </style>
 </resources>

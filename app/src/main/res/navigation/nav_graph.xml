@@ -23,7 +23,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.money.Fragment.SplashFragment"
+        android:name="com.example.money.LaunchScreen"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/activity_launch_screen" />
 </navigation>

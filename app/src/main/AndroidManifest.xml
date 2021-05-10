@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_log_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Money">
-        <activity android:name=".EditOperationsActivity"></activity>
+        <activity android:name=".EditOperationsActivity"/>
         <activity android:name=".DiagramActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity
+            android:name=".LaunchScreen"
+            android:label="@string/app_name"
+            android:theme="@style/LaunchScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

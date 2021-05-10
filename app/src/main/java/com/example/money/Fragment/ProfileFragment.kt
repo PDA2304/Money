@@ -19,6 +19,7 @@ import com.example.money.database.User
 import com.example.money.model.SaveCost
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.coroutines.CoroutineScope
@@ -44,7 +45,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var db = DataBaseHelper(view.context)
 
-        delete_data.setOnClickListener{
+        delete_data.setOnClickListener {
             activity?.deleteDatabase("money.db")
         }
 
@@ -73,6 +74,8 @@ class ProfileFragment : Fragment() {
                         linear_users.visibility = View.GONE
                     }
                     activity?.deleteDatabase("money.db")
+                    User.name = ""
+                    User.email = ""
                     FirebaseAuth.getInstance().signOut()
                 }
                 view.findViewById<TextView>(R.id.text_put).text = "Вход"
@@ -134,16 +137,17 @@ class ProfileFragment : Fragment() {
                                 val saveDateFireBase = documentSnapshot.toObject(SaveDateFireBase::class.java)
                                 db.FirebaseSave(saveDateFireBase!!)
                             }
-                            FirebaseFirestore.getInstance().collection("user_date").document(FirebaseAuth.getInstance().uid.toString()).get().addOnSuccessListener { documentSnapshot ->
-                                    val saveDateFireBase = documentSnapshot.toObject(User::class.java)
-                                    User.name = saveDateFireBase?.name!!
-                                    User.email = saveDateFireBase?.email!!
 
-                                }
+                            FirebaseFirestore.getInstance().collection("user_date").document(FirebaseAuth.getInstance().uid.toString()).get().addOnSuccessListener { documentSnapshot ->
+                               var saveDateFireBase = documentSnapshot.toObject(User::class.java)
+                                User.name = saveDateFireBase!!.name!!
+                                User.email = saveDateFireBase!!.email!!
+
+                            }
 
                             activity?.runOnUiThread {
-                                view.findViewById<TextView>(R.id.name).text = User.name
-                                view.findViewById<TextView>(R.id.email).text = User.email
+                                view.findViewById<TextView>(R.id.name).text =  User.name
+                                view.findViewById<TextView>(R.id.email).text =  User.name
                                 Toast.makeText(view.context, "Загрузка закончена", Toast.LENGTH_SHORT).show()
                                 linear_users.visibility = View.VISIBLE
                             }
@@ -252,24 +256,23 @@ class ProfileFragment : Fragment() {
             }
             if (!password.isErrorEnabled && !name.isErrorEnabled && !email.isErrorEnabled) FirebaseAuth.getInstance()
                 .createUserWithEmailAndPassword(email!!.editText!!.text.toString(), password!!.editText!!.text.toString()).addOnSuccessListener {
-                CoroutineScope(Dispatchers.IO).launch {
-                    var income = db.Income()
-                    var invoice = db.Invoice()
-                    var expence = db.Expence()
-                    User.email = email!!.editText!!.text.toString()
-                    User.name = name!!.editText!!.text.toString()
-                    var te = SaveDateFireBase(income, expence, invoice)
-                    val user = User(email!!.editText!!.text.toString(), name!!.editText!!.text.toString())
-                    FirebaseFirestore.getInstance().collection("user").document(FirebaseAuth.getInstance().uid.toString()).set(te)
-                    FirebaseFirestore.getInstance().collection("user_date").document(FirebaseAuth.getInstance().uid.toString())
-                        .set(User)
-                    activity?.runOnUiThread {
-                       create.dismiss()
-                        Toast.makeText(view.context, "Загрузка закончена", Toast.LENGTH_SHORT).show()
+                    CoroutineScope(Dispatchers.IO).launch {
+                        var income = db.Income()
+                        var invoice = db.Invoice()
+                        var expence = db.Expence()
+                        User.email = email!!.editText!!.text.toString()
+                        User.name = name!!.editText!!.text.toString()
+                        var te = SaveDateFireBase(income, expence, invoice)
+                        val user = User(email!!.editText!!.text.toString(), name!!.editText!!.text.toString())
+                        FirebaseFirestore.getInstance().collection("user").document(FirebaseAuth.getInstance().uid.toString()).set(te)
+                        FirebaseFirestore.getInstance().collection("user_date").document(FirebaseAuth.getInstance().uid.toString()).set(User)
+                        activity?.runOnUiThread {
+                            create.dismiss()
+                            Toast.makeText(view.context, "Загрузка закончена", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
 
-            }
+                }
 
         }
 

@@ -78,19 +78,16 @@ class MainActivity : AppCompatActivity() {
 
             when (item.itemId) {
                 R.id.invoiceFragment -> {
-                    search.visibility = View.GONE
                     invoice_select.visibility = View.GONE
                     date_select.visibility = View.GONE
                     title = "Счета"
                 }
                 R.id.categoriesFragment -> {
-                    search.visibility = View.VISIBLE
                     invoice_select.visibility = View.VISIBLE
                     date_select.visibility = View.VISIBLE
                     title = "Категории"
                 }
                 R.id.profileFragment -> {
-                    search.visibility = View.GONE
                     invoice_select.visibility = View.GONE
                     date_select.visibility = View.GONE
                     title = "Профиль"
