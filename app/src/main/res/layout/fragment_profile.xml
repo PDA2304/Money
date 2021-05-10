@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/linear_users"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -49,6 +50,7 @@
                         android:text="Имя пользователя" />
 
                     <TextView
+                        android:id="@+id/name"
                         style="@style/Text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -89,6 +91,7 @@
 
                     <TextView
                         style="@style/Text"
+                        android:id="@+id/email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="isip_d.a.pahomov@mpt.ru" />
@@ -102,6 +105,7 @@
                 android:background="@color/information" />
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -169,6 +173,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/application"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -201,6 +206,7 @@
                 android:background="@color/information" />
 
             <LinearLayout
+                android:id="@+id/linear_put"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -221,6 +227,7 @@
 
                     <TextView
                         style="@style/Text"
+                        android:id="@+id/text_put"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Вход" />
@@ -242,6 +249,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:visibility="gone"
         android:id="@+id/password_edit"
         style="@style/Button"
         android:layout_width="match_parent"

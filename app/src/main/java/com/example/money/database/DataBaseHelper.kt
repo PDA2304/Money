@@ -11,6 +11,7 @@ import com.example.money.model.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE, null, DATABASE_VERSION) {
@@ -142,7 +143,6 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         db!!.close()
     }
 
-
     fun InsertIncome(Date: String, Category_Income_ID: Int, Cost: Long, Description: String, Invoice_ID: Int) {
         db = openHelper.writableDatabase
         val newValues = ContentValues()
@@ -223,7 +223,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         for (i in 0..date.size - 1) {
             val cursor = onSelectInvoice(date[i], Invoice_ID)
             val arrayList = ArrayList<Operations>()
-            var cost : Long = 0
+            var cost: Long = 0
 
             if (cursor.moveToFirst()) {
                 do {
@@ -265,55 +265,179 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, NAME_FILE
         db = openHelper.writableDatabase
         if (Invoice_ID == 0) return db!!.query(
             "View_Expence_Income", null, "Date = ?", arrayOf(date), null, null, null
-        )else
-        {
+        ) else {
             return db!!.query(
                 "View_Expence_Income", null, "Date = ? AND Invoice_ID = ?", arrayOf(date, Invoice_ID.toString()), null, null, null
             )
         }
     }
 
-    fun onDeleteExpence(ID: Int)
-    {
+    fun onDeleteExpence(ID: Int) {
         db = openHelper.writableDatabase
         db!!.execSQL("PRAGMA foreign_keys=ON");
         db!!.delete("Expence", "ID_Expence =$ID", null)
         db!!.close()
     }
 
-    fun onDeleteIncome(ID: Int)
-    {
+    fun onDeleteIncome(ID: Int) {
         db = openHelper.writableDatabase
         db!!.execSQL("PRAGMA foreign_keys=ON");
         db!!.delete("Income", "ID_Income =$ID", null)
         db!!.close()
     }
 
-    fun onUpdateExpence(operations: Operations)
-    {
+    fun onUpdateExpence(operations: Operations) {
         db = openHelper.writableDatabase
         val newValues = ContentValues()
-        newValues.put("Date",operations.Date)
-        newValues.put("Category_Expence_ID",operations.Catagory_ID )
+        newValues.put("Date", operations.Date)
+        newValues.put("Category_Expence_ID", operations.Catagory_ID)
         newValues.put("Cost", operations.Cost)
-        newValues.put("Description", operations.Description )
+        newValues.put("Description", operations.Description)
         newValues.put("Invoice_ID", operations.Invoice_ID)
         db!!.update("Expence", newValues, "ID_Expence = ${operations.ID}", null)
         db!!.close()
     }
 
-    fun onUpdateIncome(operations: Operations)
-    {
+    fun onUpdateIncome(operations: Operations) {
         db = openHelper.writableDatabase
         val newValues = ContentValues()
-        newValues.put("Date",operations.Date)
-        newValues.put("Category_Income_ID",operations.Catagory_ID )
+        newValues.put("Date", operations.Date)
+        newValues.put("Category_Income_ID", operations.Catagory_ID)
         newValues.put("Cost", operations.Cost)
-        newValues.put("Description", operations.Description )
+        newValues.put("Description", operations.Description)
         newValues.put("Invoice_ID", operations.Invoice_ID)
         db!!.update("Income", newValues, "ID_Income = ${operations.ID}", null)
         db!!.close()
     }
 
+    fun Invoice(): ArrayList<Inv> {
+        db = openHelper.writableDatabase
+        var arrayList = ArrayList<Inv>()
+        val cursor: Cursor = db!!.query("Invoice", null, null, null, null, null, "Type_ID_Invoice ASC")
+        if (cursor.moveToFirst()) {
+            do {
+
+                val invoice = Invoice(0, "", 0, 0, 0)
+                invoice.imageId = cursor.getInt(2)
+                arrayList.add(
+                    Inv(
+                        cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getLong(3)
+                    )
+                )
+            } while (cursor.moveToNext())
+        } else {
+            arrayList = ArrayList()
+        }
+
+        db!!.close()
+
+        return arrayList
+    }
+
+    fun Expence(): ArrayList<Oper> {
+        db = openHelper.writableDatabase
+        var arrayList = ArrayList<Oper>()
+        val cursor: Cursor = db!!.query("Expence", null, null, null, null, null, "ID_Expence ASC")
+        if (cursor.moveToFirst()) {
+            do {
+                arrayList.add(
+                    Oper(
+                        cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4), cursor.getInt(5)
+                    )
+                )
+            } while (cursor.moveToNext())
+        } else {
+            arrayList = ArrayList()
+        }
+
+        db!!.close()
+
+        return arrayList
+    }
+
+    fun Income(): ArrayList<Oper> {
+        db = openHelper.writableDatabase
+        var arrayList = ArrayList<Oper>()
+        val cursor: Cursor = db!!.query("Income", null, null, null, null, null, "ID_Income ASC")
+        if (cursor.moveToFirst()) {
+            do {
+                arrayList.add(
+                    Oper(
+                        cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4), cursor.getInt(5)
+                    )
+                )
+            } while (cursor.moveToNext())
+        } else {
+            arrayList = ArrayList()
+        }
+
+        db!!.close()
+
+        return arrayList
+    }
+
+    fun FirebaseExpence(arrayexpence: ArrayList<HashMap<*, *>>) {
+
+    }
+
+    fun FirebaseIncome(arrayincome: ArrayList<HashMap<*, *>>) {
+
+
+    }
+
+    fun FirebaseSave(save: SaveDateFireBase) {
+        db = openHelper.writableDatabase
+        var newValues = ContentValues()
+        for (i in save.expence!!) {
+            newValues.put("Date", i.date)
+            newValues.put("Category_Expence_ID", i.Category_ID)
+            newValues.put("Cost", i.cost)
+            newValues.put("Description", i.description)
+            newValues.put("Invoice_ID", i.invoice_id)
+            db!!.insert("Expence", null, newValues)
+        }
+        db!!.close()
+
+        db = openHelper.writableDatabase
+        newValues = ContentValues()
+        for (i in save.income!!) {
+            newValues.put("Date", i.date)
+            newValues.put("Category_Income_ID", i.Category_ID)
+            newValues.put("Cost", i.cost!!.toInt())
+            newValues.put("Description", i.description)
+            newValues.put("Invoice_ID", i.invoice_id)
+            db!!.insert("Income", null, newValues)
+        }
+        db!!.close()
+
+        db = openHelper.writableDatabase
+        newValues = ContentValues()
+        for (i in save.invoice!!) {
+            newValues.put("ID_Invoice", i.ID_Invoice)
+            newValues.put("Name", i.Name)
+            newValues.put("Type_ID_Invoice", i.Type_ID_Invoice)
+            newValues.put("Cost", i.Cost!!.toInt())
+            db!!.insert("Invoice", null, newValues)
+        }
+        db!!.close()
+    }
+
 }
 
+data class Oper(var ID: Int? = null, var date: String? = null, var Category_ID: Int? = null, var cost: String? = null, var description: String? = null, var invoice_id: Int? = null)
+
+data class Inv(
+    var ID_Invoice: Int? = null, var Name: String? = null, var Type_ID_Invoice: Int? = null, var Cost: Long? = null
+)
+
+data class SaveDateFireBase(
+    var income: ArrayList<Oper>? = null, var expence: ArrayList<Oper>? = null, var invoice: ArrayList<Inv>? = null
+)
+
+data class User(var email: String? = null, var name: String? = null) {
+    companion object {
+        var email: String = ""
+        var name: String = ""
+
+    }
+}

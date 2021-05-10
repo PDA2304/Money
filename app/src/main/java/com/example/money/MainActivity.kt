@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.*
@@ -13,10 +15,17 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.money.Dialog.DialogDateFragment
 import com.example.money.Dialog.DialogSelectInvoice
-import com.example.money.Fragment.CategoriesFragment
+import com.example.money.database.DataBaseHelper
+import com.example.money.database.SaveDateFireBase
+import com.example.money.database.User
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_categories.*
 import kotlinx.android.synthetic.main.fragment_invoice.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,9 +37,33 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_actionbar)
         setSupportActionBar(toolbar)
 
+        if (FirebaseAuth.getInstance().uid != null) {
+            var db = DataBaseHelper(this)
+            CoroutineScope(Dispatchers.IO).launch {
+                val docRef = FirebaseFirestore.getInstance().collection("user_date").document(FirebaseAuth.getInstance().uid.toString())
+                docRef.get().addOnSuccessListener { documentSnapshot ->
+                    val saveDateFireBase = documentSnapshot.toObject(User::class.java)
+                    if (saveDateFireBase != null) {
+
+                        User.name = saveDateFireBase!!.name!!
+                        User.email = saveDateFireBase!!.email!!
+                    }
+                }
+
+                var income = db.Income()
+                var invoice = db.Invoice()
+                var expence = db.Expence()
+                var te = SaveDateFireBase(income, expence, invoice)
+                FirebaseFirestore.getInstance().collection("user").document(FirebaseAuth.getInstance().uid.toString()).set(te)
+                runOnUiThread {
+                    Toast.makeText(this@MainActivity, "Загрузка закончена", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
         title = "Категории"
 
-        var navController = Navigation.findNavController(this, R.id.navigation)
+        val navController = Navigation.findNavController(this, R.id.navigation)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
@@ -64,6 +97,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             return@setOnNavigationItemSelectedListener true
+
+
         }
     }
 
